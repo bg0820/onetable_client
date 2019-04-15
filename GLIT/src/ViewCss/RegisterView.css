@@ -1,0 +1,37 @@
+.textFiledDesign {
+	-fx-background-color: #fff;
+	-fx-border-color: #74CEBD;
+	-fx-border-width: 0px 0px 2px 0px;
+}
+
+.background {
+	-fx-background-color: #fff;
+}
+
+.label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.button {
+	-fx-background-color : #fff;
+	-fx-border-color : #74CEBD;
+	-fx-text-fill : #848484;
+	-fx-font-size: 11pt;
+}
+
+.button:hover {
+	-fx-background-color : #74CEBD;
+	-fx-text-fill : #fff;
+}
+
+.customSelectDesign {
+	-fx-background-color: #fff;
+	-fx-border-color: #ccc;
+}
+
+.customSelectDesign:focused {
+	-fx-border-color: #74CEBD;
+}
+

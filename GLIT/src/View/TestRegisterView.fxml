@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane minHeight="-Infinity" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../ViewCss/TestRegisterView.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TestRegisterViewController">
+   <children>
+      <GridPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" percentWidth="37.0" />
+          <ColumnConstraints hgrow="SOMETIMES" percentWidth="63.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane style="-fx-background-color: #CAE8E2#CAE8E2;">
+               <center>
+                  <ImageView fitHeight="357.0" fitWidth="298.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../img/logo.png" />
+                     </image>
+                  </ImageView>
+               </center>
+               <top>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="TOP_LEFT">
+                     <children>
+                        <Button fx:id="backBtn" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backBtn" prefHeight="20.0" prefWidth="20.0" rotate="225.0" styleClass="backBtn" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets left="25.0" top="25.0" />
+                     </padding>
+                  </HBox>
+               </top>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1">
+               <center>
+                  <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefWidth="380.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label styleClass="customLabel" text="아이디">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <VBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="inputID" prefHeight="40.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#idDuplicateCheck" prefHeight="40.0" prefWidth="100.0" styleClass="customBtn" text="중복확인" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="idMsg" styleClass="errorMsgLabel" text="Label" visible="false">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <Label styleClass="customLabel" text="비밀번호">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <PasswordField fx:id="inputPW" prefHeight="40.0" styleClass="customInputField">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </PasswordField>
+                        <Label styleClass="customLabel" text="비밀번호 확인">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <PasswordField fx:id="inputPWConfirm" prefHeight="40.0" styleClass="customInputField">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </PasswordField>
+                        <Label styleClass="customLabel" text="닉네임">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <TextField fx:id="inputNickname" prefHeight="40.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="customBtn" text="중복확인" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label styleClass="customLabel" text="이메일">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <TextField fx:id="inputEmailID" prefHeight="40.0" prefWidth="150.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="15.0" styleClass="emailLabel" text="\@">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="inputEmail" prefHeight="40.0" styleClass="customInputField" HBox.hgrow="ALWAYS" />
+                              <ComboBox fx:id="selectEmail" onAction="#emailSelectChange" prefHeight="40.0" prefWidth="200.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label styleClass="customLabel" text="생년월일">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <ComboBox fx:id="selectYear" prefHeight="40.0" prefWidth="150.0" styleClass="customInputField" />
+                              <Label alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" prefWidth="15.0" styleClass="emailLabel" text="년" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="selectMonth" prefHeight="40.0" prefWidth="150.0" styleClass="customInputField" />
+                              <Label alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" prefWidth="15.0" styleClass="emailLabel" text="월" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="selectDay" prefHeight="40.0" prefWidth="150.0" styleClass="customInputField" />
+                              <Label alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" prefWidth="15.0" styleClass="emailLabel" text="일" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="380.0" styleClass="customBtn" text="회원가입">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <HBox alignment="CENTER" styleClass="errorMsgLabel">
+                           <children>
+                              <Label fx:id="errorMsg" alignment="CENTER" styleClass="errorMsgLabel" text="Label" textAlignment="CENTER" visible="false" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </BorderPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

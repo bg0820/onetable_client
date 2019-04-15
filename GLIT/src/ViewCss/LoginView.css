@@ -1,0 +1,58 @@
+.background {
+	-fx-background-color: #fff;
+}
+
+.textfield {
+	-fx-background-color: #fff;
+	-fx-border-width: 0px;
+	-fx-border-color:  #74CEBD;
+	-fx-border-width: 0px 0px 3px 0px;
+	-fx-font-size: 20px;
+	-fx-text-fill : #000;
+	-fx-prompt-text-fill: #e8e8e8;
+	-fx-font-family : 'BM HANNA 11yrs old';
+}
+
+.btn {
+	-fx-background-color: #fff;
+	-fx-border-color : #74CEBD;
+	-fx-border-width: 2px 2px 2px 2px;
+	-fx-border-radius: 0px;
+	-fx-background-radius: 10px;
+	-fx-text-fill: #74CEBD;
+	-fx-font-size: 30px;
+	-fx-font-family : 'BM HANNA 11yrs old';
+	
+}
+
+.btn:hover{
+	-fx-background-color : #74CEBD;
+	-fx-text-fill: #fff;
+	-fx-font-size: 30px;
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-border-color : #fff;
+	-fx-border-width: 2px 2px 2px 2px;
+}
+
+.labelBtn {
+	-fx-background-color: #fff;
+	-fx-text-fill: #74CEBD;
+	-fx-font-size: 25px;
+	-fx-font-family : 'BM HANNA 11yrs old';
+}
+
+.leftPane {
+	-fx-background-color: #fff;
+	
+}
+
+.rightPane {
+	-fx-background-color: #fff;
+	
+}
+
+.label {
+	-fx-background-color: #fff;
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 20px;
+}
