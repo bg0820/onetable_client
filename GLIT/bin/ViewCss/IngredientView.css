@@ -1,0 +1,11 @@
+.label{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 22px;
+	-fx-text-fill : #ffffff;
+}
+
+.label2{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 24px;
+	-fx-text-fill : #74cebd;
+}
