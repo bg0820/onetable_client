@@ -31,7 +31,7 @@
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/house.png" />
+                              <Image url="@../img/house.png" />
                            </image>
                         </ImageView>
                         <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="138.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="홈" textFill="WHITE">
@@ -48,7 +48,7 @@
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/basket.png" />
+                              <Image url="@../img/basket.png" />
                            </image>
                         </ImageView>
                         <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="157.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
@@ -65,7 +65,7 @@
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/recipes.png" />
+                              <Image url="@../img/recipes.png" />
                            </image>
                         </ImageView>
                         <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="레시피" textFill="WHITE">
@@ -82,7 +82,7 @@
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/dish.png" />
+                              <Image url="@../img/dish.png" />
                            </image>
                         </ImageView>
                         <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="한상차림" textFill="WHITE">
@@ -99,7 +99,7 @@
                      <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/badge.png" />
+                              <Image url="@../img/badge.png" />
                            </image>
                         </ImageView>
                         <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="랭킹" textFill="WHITE">
@@ -120,7 +120,7 @@
                      <children>
                         <ImageView fitHeight="57.0" fitWidth="60.0">
                            <image>
-                              <Image url="@../../../../../Desktop/기프/박현주%20프론트/icon_white/star.png" />
+                              <Image url="@../img/star.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="630.0" top="7.0" />
