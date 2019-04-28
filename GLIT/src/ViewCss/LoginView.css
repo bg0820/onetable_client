@@ -1,58 +1,72 @@
+* {
+	-fx-font-family: 'BM HANNA 11yrs old';
+}
+
 .background {
 	-fx-background-color: #fff;
 }
 
-.textfield {
-	-fx-background-color: #fff;
-	-fx-border-width: 0px;
-	-fx-border-color:  #74CEBD;
-	-fx-border-width: 0px 0px 3px 0px;
-	-fx-font-size: 20px;
-	-fx-text-fill : #000;
-	-fx-prompt-text-fill: #e8e8e8;
-	-fx-font-family : 'BM HANNA 11yrs old';
+.leftPane {
 }
-
-.btn {
-	-fx-background-color: #fff;
-	-fx-border-color : #74CEBD;
-	-fx-border-width: 2px 2px 2px 2px;
-	-fx-border-radius: 0px;
-	-fx-background-radius: 10px;
-	-fx-text-fill: #74CEBD;
-	-fx-font-size: 30px;
-	-fx-font-family : 'BM HANNA 11yrs old';
+.emailLabel {
 	
+	-fx-text-fill: #848484;
 }
 
-.btn:hover{
-	-fx-background-color : #74CEBD;
+.errorMsgLabel {
+	-fx-text-fill: #FF5A5A;
+	-fx-font-size: 15pt;
+}
+
+.customLabel {
+	-fx-font-size: 15pt;
+	-fx-text-fill: #848484;
+	-fx-font-weight: bold;
+}
+
+/* 기본 디자인  */
+.customInputField {
+	-fx-background-color: #fff;
+	-fx-border-color: #CCC;
+	-fx-font-family: 'Arial';
+	-fx-font-size: 13pt;
+}
+.customIdInputField {
+	-fx-background-color: #fff;
+	-fx-border-color: #CCC;
+	-fx-font-family: 'BM HANNA 11yrs old';
+	-fx-font-size: 13pt;
+}
+
+/* 포커스 됐을때 디자인 - 테두리 색상 변경 */
+.customInputField:focused {
+	-fx-border-color: #74CEBD;
+}
+/* 비활성화 시 디자인  */ 
+.customInputField:disabled {
+	-fx-background-color: #f2f2f2;
+	-fx-text-fill: #848484;
+	-fx-opacity: 1;
+}
+
+.customBtn {
+	-fx-background-color: #fff;
+	-fx-text-fill: #74CEBD;
+	-fx-border-radius: 0;
+	-fx-background-radius: 0;
+	-fx-border-color: #74CEBD;
+	-fx-border-width: 1px;
+	-fx-font-size: 15pt;
+}
+
+.customBtn:hover {
+	-fx-background-color: #74CEBD;
 	-fx-text-fill: #fff;
-	-fx-font-size: 30px;
-	-fx-font-family : 'BM HANNA 11yrs old';
-	-fx-border-color : #fff;
-	-fx-border-width: 2px 2px 2px 2px;
+	
 }
 
 .labelBtn {
 	-fx-background-color: #fff;
-	-fx-text-fill: #74CEBD;
-	-fx-font-size: 25px;
-	-fx-font-family : 'BM HANNA 11yrs old';
-}
-
-.leftPane {
-	-fx-background-color: #fff;
-	
-}
-
-.rightPane {
-	-fx-background-color: #fff;
-	
-}
-
-.label {
-	-fx-background-color: #fff;
-	-fx-font-family : 'BM HANNA 11yrs old';
-	-fx-font-size: 20px;
+	-fx-text-fill:  #74CEBD;
+	-fx-font-size: 15pt;
 }

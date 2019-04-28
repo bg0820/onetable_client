@@ -2,148 +2,108 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.jsoup.HttpStatusException;
+import org.jsoup.Connection;
+import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginViewController {
-	private OpenScene openScene;
+public class LoginViewController implements Initializable {
 
 	@FXML
-	private TextField idInput;
+	private TextField inputID;
 	@FXML
-	private TextField pwInput;
+	private PasswordField inputPW;
+
 	@FXML
-	private Button idFind;
-	@FXML
-	private Button newRegister;
-	@FXML
-	private Label message;
+	private Label errorMsg;
 
-	/**public void initialize() throws Exception {
-        PrintWriter writer = ... ;
-        openScene = new OpenScene(writer);
-    }
-	 * @throws IOException
 
-    @FXML // handler for connect button:
-    private void btnConnect() throws Exception {
-        Stage stage = (Stage) idFind.getScene().getWindow();
-        openScene.start(stage);
-    }**/
-
-	Stage thisStage;
-
-	public void setStage (Stage stage){
-	    thisStage = stage;
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// 자리 차지 안하게 하기
+		//idMsg.setManaged(false);
 	}
 
-	public void showStage(){
-	    thisStage.setTitle("Titel in der MainController.java geändert");
-	    thisStage.show();
-	}
+	//( pg - 1) / 10 * 10 + 1
+	public void login(ActionEvent event) {
 
-	public void FindId(ActionEvent event) {
-		URL location = getClass().getResource("/View/TestIdPwFindView.fxml");
-	    FXMLLoader fxmlLoader = new FXMLLoader();
-	    fxmlLoader.setLocation(location);
-	    fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-	    Parent root;
-		try {
-			root = (Parent) fxmlLoader.load(location.openStream());
-			 Scene scene = new Scene(root);
-			    thisStage.setScene(scene);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("로그인 클릭 ");
 
-
-	}
-
-
-	public void RegisterPage(ActionEvent event) {
-		URL location = getClass().getResource("/View/TestRegisterView.fxml");
-	    FXMLLoader fxmlLoader = new FXMLLoader();
-	    fxmlLoader.setLocation(location);
-	    fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-	    Parent root;
-		try {
-			root = (Parent) fxmlLoader.load(location.openStream());
-			 Scene scene = new Scene(root);
-			    thisStage.setScene(scene);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	public void Login(ActionEvent event) throws Exception {
-
-		String id = idInput.getText();
-		String pw = pwInput.getText();
+		String id = inputID.getText();
+		String pw = inputPW.getText();
 
 		//private boolean isIDDuplicate = false;
 
 		if(id.equals(""))
 		{
-			message.setText("Please enter your ID");
-		};
+			errorMsg.setVisible(true);
+			errorMsg.setText("아이디를 입력해주세요.");
+			return;
+		}
 
 		if(pw.equals(""))
 		{
-			message.setText("Please enter your PASSWORD");
-		};
+			errorMsg.setVisible(true);
+			errorMsg.setText("비밀번호를 입력해주세요.");
+			return;
+		}
 
-		 if(id.equals("user") && pw.equals("pass")){
-			 	message.setText("Login Success");
-	            Stage primaryStage = new Stage();
-	            Parent root = FXMLLoader.load(getClass().getResource("/application/TestMain.fxml"));
-	            Scene scene = new Scene(root);
-	            scene.getStylesheets().add(getClass().getResource("LoginView.css").toExternalForm());
-	            primaryStage.setScene(scene);
-	            primaryStage.show();
-	        }else{
-	            message.setText("Login Failed");
-	        }
-
-
-		System.out.println(idInput.getText() + ", " + pwInput.getText());
+		if(pw.length() < 8)
+		{
+			errorMsg.setVisible(true);
+			errorMsg.setText("비밀번호는 8자 이상입니다.");
+			return;
+		}
 
 		try {
-			String doc = Jsoup.connect("http://1.240.181.56:8080/auth/login").ignoreContentType(true)
-					.header("API_Version", "1.0").data("id", idInput.getText()).data("pw", pwInput.getText()).execute()
-					.body();
-   
+			Connection.Response resp = Jsoup.connect("http://1.240.181.56:8080/auth/login")
+					.method(Method.POST)
+					.ignoreHttpErrors(true)
+					.ignoreContentType(true)
+					.header("API_Version", "1.0").data("id", id).data("pw", pw).execute();
+			String json = resp.body();
+			System.out.println(json);
+
 			JSONParser jsonParse = new JSONParser();
 			// JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
-			JSONObject jsonObj = (JSONObject) jsonParse.parse(doc);
-			JSONObject jsonData = (JSONObject) jsonObj.get("data");
+			JSONObject jsonObj = (JSONObject) jsonParse.parse(json);
 
-			jsonData.get("userUUID").toString();
-			jsonData.get("nickname").toString();
- 
+			if(jsonObj.get("status").equals("SUCCESS"))
+			{
+				JSONObject jsonData = (JSONObject) jsonObj.get("data");
 
-			System.out.println(doc);
-		} catch (HttpStatusException er) {
-			if (er.getStatusCode() == 409) {
-				System.out.println("아이디 또는 비밀번호가 잘못되었음");
-			}  
+				jsonData.get("token").toString();
+
+				// 창 전환
+				Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IngredientView.fxml")));
+				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+				window.setScene(registerScene);
+			}
+			else
+			{
+				if(jsonObj.get("errorCode").equals("LOGIN_FAILED"))
+				{
+					errorMsg.setVisible(true);
+					errorMsg.setText(jsonObj.get("msg").toString());
+					System.out.println("SDA");
+				}
+			}
+
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,6 +114,35 @@ public class LoginViewController {
 			e.printStackTrace();
 		}
 
-		System.out.println("Login Click");
+
+
 	}
+
+	public void idPwBtn(ActionEvent event) throws IOException
+	{
+		// 창 전환
+		Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IdPwFindView.fxml")));
+		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+		window.setScene(registerScene);
+
+	}
+
+	public void register(ActionEvent event) throws IOException
+	{
+		// 창 전환
+		Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/TestRegisterView.fxml")));
+		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+		window.setScene(registerScene);
+
+	}
+
+	public void backBtn(ActionEvent event) throws IOException{
+		// 창 전환
+		Scene registerScene =
+				new Scene(FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(registerScene);
+
+	}
+
 }
