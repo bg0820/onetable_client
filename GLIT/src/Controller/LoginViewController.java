@@ -76,8 +76,8 @@ public class LoginViewController implements Initializable {
 					.ignoreHttpErrors(true)
 					.ignoreContentType(true)
 					.header("API_Version", "1.0").data("id", id).data("pw", pw).execute();
+			
 			String json = resp.body();
-			System.out.println(json);
 
 			JSONParser jsonParse = new JSONParser();
 			// JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.

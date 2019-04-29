@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -28,7 +30,7 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="267.0" style="-fx-background-color: #74CEBD;">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="홈" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="sideMenuBtn" stylesheets="@../ViewCss/IngredientView.css" text="홈" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -45,48 +47,60 @@
                      <VBox.margin>
                         <Insets top="60.0" />
                      </VBox.margin>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <graphic>
+                  </HBox>
+                  <HBox prefHeight="51.0" prefWidth="243.0">
+                     <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@../img/basket.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="레시피" textFill="WHITE">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <graphic>
+                        <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="157.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="51.0" prefWidth="243.0">
+                     <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@../img/recipes.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="한상차림" textFill="WHITE">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <graphic>
+                        <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="레시피" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="51.0" prefWidth="243.0">
+                     <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@../img/dish.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="랭킹" textFill="WHITE">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <graphic>
+                        <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="170.0" style="-fx-background-color: #74CEBD;" styleClass="label" stylesheets="@../ViewCss/IngredientView.css" text="한상차림" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="51.0" prefWidth="243.0">
+                     <children>
                         <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@../img/badge.png" />
@@ -98,19 +112,19 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
                <children>
-                  <HBox prefHeight="109.0" prefWidth="1038.0">
+                  <HBox alignment="CENTER_RIGHT">
                      <children>
                         <ImageView fitHeight="57.0" fitWidth="60.0">
                            <image>
                               <Image url="@../img/star.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="630.0" top="7.0" />
+                              <Insets />
                            </HBox.margin>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="46.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="즐겨찾기" textFill="#74cebd">
                            <HBox.margin>
-                              <Insets top="18.0" />
+                              <Insets />
                            </HBox.margin>
                            <font>
                               <Font size="24.0" />
@@ -118,7 +132,7 @@
                         </Button>
                         <Circle fill="#74cebd" radius="30.0" stroke="WHITE" strokeType="INSIDE">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </Circle>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.4" prefWidth="128.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="김보규님" textFill="#74cebd">
@@ -126,14 +140,15 @@
                               <Font size="24.0" />
                            </font>
                            <HBox.margin>
-                              <Insets top="18.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets right="15.0" top="15.0" />
                      </VBox.margin>
                   </HBox>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>

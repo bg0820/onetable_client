@@ -10,6 +10,19 @@
 	-fx-text-fill : #74cebd;
 }
 
-.sideMenuBar {
-	-fx-background-color:  #74CEBD;
+.sideMenuBtn {
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 22px;
+	-fx-text-fill : #ffffff;
+	-fx-background-color:  #74cebd;
+}
+
+.sideMenuBtn:hover {
+	-fx-background-color: #70C4B4;
+}
+
+.sideMenuBtnSelect {
+	-fx-border-color: #fff;
+	-fx-border-width: 0px 0px 0px 5px;
+	
 }
