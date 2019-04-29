@@ -9,3 +9,7 @@
 	-fx-font-size: 24px;
 	-fx-text-fill : #74cebd;
 }
+
+.sideMenuBar {
+	-fx-background-color:  #74CEBD;
+}

@@ -130,7 +130,7 @@ public class LoginViewController implements Initializable {
 	public void register(ActionEvent event) throws IOException
 	{
 		// 창 전환
-		Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/TestRegisterView.fxml")));
+		Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/RegisterView.fxml")));
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		window.setScene(registerScene);
 

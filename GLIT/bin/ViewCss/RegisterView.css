@@ -1,37 +1,68 @@
-.textFiledDesign {
-	-fx-background-color: #fff;
-	-fx-border-color: #74CEBD;
-	-fx-border-width: 0px 0px 2px 0px;
+* {
+	-fx-font-family: 'BM HANNA 11yrs old';
 }
+
 
 .background {
 	-fx-background-color: #fff;
 }
 
-.label {
-    -fx-font-size: 10pt;
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
+.leftPane {
+}
+.emailLabel {
+	-fx-text-fill: #848484;
 }
 
-.button {
-	-fx-background-color : #fff;
-	-fx-border-color : #74CEBD;
-	-fx-text-fill : #848484;
-	-fx-font-size: 11pt;
+.errorMsgLabel {
+	-fx-text-fill: #FF5A5A;
+	-fx-font-size: 9pt;
 }
 
-.button:hover {
-	-fx-background-color : #74CEBD;
-	-fx-text-fill : #fff;
+.customLabel {
+	-fx-font-size: 9pt;
+	-fx-text-fill: #848484;
+	-fx-font-weight: bold;
 }
 
-.customSelectDesign {
+.customInputField {
 	-fx-background-color: #fff;
-	-fx-border-color: #ccc;
+	-fx-border-color: #CCC;
+	-fx-font-family: 'Arial'
 }
 
-.customSelectDesign:focused {
+
+.customInputField:focused {
 	-fx-border-color: #74CEBD;
 }
 
+.customInputField:disabled {
+	-fx-background-color: #f2f2f2;
+	-fx-text-fill: #848484;
+	-fx-opacity: 1;
+}
+
+.customBtn {
+	-fx-background-color: #fff;
+	-fx-text-fill: #74CEBD;
+	-fx-border-radius: 0;
+	-fx-background-radius: 0;
+	-fx-border-color: #74CEBD;
+	-fx-border-width: 1px;
+}
+
+.customBtn:hover {
+	-fx-background-color: #74CEBD;
+	-fx-text-fill: #fff;
+	
+}
+
+.backBtn {
+	-fx-border-width: 4px 4px 0px 0px;
+	-fx-border-color: #fff;
+	-fx-background-color: transparent;
+
+}
+
+.backBtn:hover {
+	-fx-border-color: #cdcdcd;
+}
