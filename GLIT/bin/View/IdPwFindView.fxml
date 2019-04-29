@@ -31,7 +31,7 @@
                <center>
                   <ImageView fitHeight="357.0" fitWidth="298.0" BorderPane.alignment="CENTER">
                      <image>
-                        <Image url="@../../../../../Desktop/기프/박현주%20프론트/로그인%20디자인/한상차림.png" />
+                        <Image url="@../img/logo.png" />
                      </image>
                   </ImageView>
                </center>
