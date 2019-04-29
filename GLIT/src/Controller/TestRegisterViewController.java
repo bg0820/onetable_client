@@ -4,28 +4,30 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
-import org.jsoup.Connection.Method;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.jsoup.Connection;
+import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
+import Util.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class TestRegisterViewController implements Initializable {
@@ -147,9 +149,8 @@ public class TestRegisterViewController implements Initializable {
 					.ignoreContentType(true).ignoreHttpErrors(true).header("API_Version", "1.0")
 					.data("id", id).data("pw", pw).data("email", email).data("nickname", nickname)
 					.data("birthday", birthday).execute();
-
+			
 			String json = resp.body();
-			System.out.println(json);
 
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) jsonParser.parse(json);
@@ -158,9 +159,23 @@ public class TestRegisterViewController implements Initializable {
 				errorMsg.setVisible(true);
 				errorMsg.setText("회원가입 성공");
 
+				Alert alert = new Alert(AlertType.NONE);
+				alert.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+			    alert.getDialogPane().setContentText("회원가입 성공");
+			    // Fool the dialog into thinking there is some expandable content
+			    // a Group won't take up any space if it has no children
+			    alert.getDialogPane().setExpandableContent(new Group());
+			    alert.getDialogPane().setExpanded(true);
+			    // Reset the dialog graphic using the default style
+			    Node graphic = alert.getDialogPane().getGraphic();
+			    alert.getDialogPane().setGraphic(graphic);
+				alert.setTitle("알림창");
+			    alert.setHeaderText("알림창");
+			    
+		    
 				// 창 전환
 				Scene registerScene = new Scene(
-						FXMLLoader.load(getClass().getResource("/View/TestLoginView.fxml")));
+						FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
 				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				window.setScene(registerScene);
 
@@ -182,31 +197,14 @@ public class TestRegisterViewController implements Initializable {
 	}
  
 	public void idDuplicateCheck(ActionEvent event) {
-		/*
-		 * idMsg.setVisible(true); idMsg.setManaged(true);
-		 * 
-		 * String URL = "http://1.240.181.56:8080/auth/register/duplicate/id"; try {
-		 * Connection.Response resp = Jsoup.connect(URL).method(Method.GET) .ignoreContentType(true)
-		 * .ignoreHttpErrors(true) .header("API_Version", "1.0").data("id",
-		 * inputID.getText()).execute();
-		 * 
-		 * String json = resp.body(); JSONParser jsonParser = new JSONParser(); JSONObject jsonObj =
-		 * (JSONObject) jsonParser.parse(json); if(Integer.parseInt(jsonObj.get("data").toString())
-		 * == 0) { idMsg.setText("사용가능"); isIDDuplicate = true; } else {
-		 * idMsg.setText("존재하는 아이디 입니다."); isIDDuplicate = false; }
-		 * 
-		 * 
-		 * } catch (ParseException e) { e.printStackTrace(); } catch (IOException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
-
+		
 	}
 
 
 	public void backBtn(ActionEvent event) throws IOException{
 		// 창 전환
 		Scene registerScene =
-				new Scene(FXMLLoader.load(getClass().getResource("/View/TestLoginView.fxml")));
+				new Scene(FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(registerScene);
 
