@@ -14,12 +14,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	@Override
+
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
 
-			URL url = getClass().getResource("/View/LoginView.fxml");
+			URL url = getClass().getResource("/View/IngredientView.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(url);
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -30,7 +31,7 @@ public class Main extends Application {
 			primaryStage.setMinHeight(600);
 			primaryStage.setTitle("한상차림");
 			// 창 크기 조정 못하게
-			//primaryStage.setResizable(false);
+			primaryStage.setResizable(false);
 
 			primaryStage.show();
 

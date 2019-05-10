@@ -1,11 +1,31 @@
-.label{
+.labels{
 	-fx-font-family : 'BM HANNA 11yrs old';
 	-fx-font-size: 22px;
 	-fx-text-fill : #ffffff;
+	
 }
 
 .label2{
 	-fx-font-family : 'BM HANNA 11yrs old';
-	-fx-font-size: 24px;
+	-fx-font-size: 20px;
 	-fx-text-fill : #74cebd;
+	-fx-background-color: #ffffff;
+}
+
+.listItemBtn {
+	-fx-background-color: white;
+	-fx-border-color: #ccc;
+}
+.menubutton{
+	-fx-background-color: #74cebd;
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 25px;
+	-fx-text-fill : #ffffff;
+}
+
+.selectMenu{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 22px;
+	-fx-text-fill : #ffffff;
+	
 }
