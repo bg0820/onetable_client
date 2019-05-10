@@ -16,7 +16,7 @@ public class Main extends Application {
 	@Override
 
 	public void start(Stage primaryStage) throws Exception {
-		try {
+		try { 
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
 
@@ -24,7 +24,7 @@ public class Main extends Application {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(url);
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-			Parent root = (Parent)fxmlLoader.load(url.openStream());
+			Parent root = (Parent)fxmlLoader.load(url.openStream());  
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setMinWidth(900);

@@ -1,0 +1,36 @@
+.label{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 22px;
+	/*-fx-text-fill : #ffffff;*/
+}
+
+.label2{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 24px;
+	-fx-text-fill : #74cebd;
+	-fx-background-color : #ffffff;
+}
+
+.label3{
+	-fx-text-fill : #74cebd;
+}
+
+.rightpane {
+	-fx-background-color : #ffffff;
+}
+
+.FindLabel {
+	-fx-background-color: #fff;
+	-fx-border-color: #CCC;
+	-fx-text-fill: #848484;
+}
+
+.sideMenuBar {
+	-fx-background-color:  #74CEBD;
+}
+
+.sidebutton {
+	-fx-background-color : #74CEBD;
+	-fx-text-fill : #ffffff;
+	-fx-font-size: 22px;
+}

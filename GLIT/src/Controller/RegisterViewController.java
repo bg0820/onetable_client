@@ -2,183 +2,263 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+import org.jsoup.Connection.Method;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.jsoup.Connection;
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class RegisterViewController implements Initializable {
-	@FXML
-	private ComboBox<String> emailList;
-	ObservableList<String> list = FXCollections.observableArrayList("naver.com", "daum.net", "gmail.com", "hanmail.net",
-			"nate.com", "paran.com");
-	@FXML
-	private ComboBox<String> yearL;
-	ObservableList<String> yearList = FXCollections.observableArrayList("1940");
 
 	@FXML
-	private ComboBox<String> monthL;
-	ObservableList<String> monthList = FXCollections.observableArrayList("1");
-
+	private Button backBtn;
 	@FXML
-	private ComboBox<String> dayL;
-	ObservableList<String> dayList = FXCollections.observableArrayList("1");
-
+	private TextField inputID;
 	@FXML
-	private TextField inputId;
+	private Label idMsg;
 	@FXML
-	private PasswordField inputPw;
+	private Label passMsg;
 	@FXML
-	private PasswordField inputPwConfirm;
+	private Label passconfirmMsg;
 	@FXML
-	private TextField inputEmailId;
+	private Label nicknameMsg;
+	@FXML
+	private PasswordField inputPW;
+	@FXML
+	private PasswordField inputPWConfirm;
+	@FXML
+	private TextField inputNickname;
+	@FXML
+	private TextField inputEmailID;
 	@FXML
 	private TextField inputEmail;
 	@FXML
-	private TextField inputNickname;
-	
-	
-	Stage thisStage;
+	private ComboBox<String> selectEmail;
+	@FXML
+	private ComboBox<String> selectYear;
+	@FXML
+	private ComboBox<String> selectMonth;
+	@FXML
+	private ComboBox<String> selectDay;
+	@FXML
+	private Label errorMsg;
 
-	public void setStage (Stage stage){
-	    thisStage = stage;
-	}
+	ObservableList<String> emailList = FXCollections.observableArrayList("naver.com",
+			"daum.net",
+			"gmail.com",
+			"hanmail.net",
+			"nate.com",
+			"paran.com",
+			"직접입력");
+	ObservableList<String> yearList = FXCollections.observableArrayList("1940");
+	ObservableList<String> monthList = FXCollections.observableArrayList("1");
+	ObservableList<String> dayList = FXCollections.observableArrayList("1");
 
-	public void showStage(){
-	    thisStage.setTitle("Titel in der MainController.java geändert");
-	    thisStage.show();
-	}
-	
-	
-	// ȭ�� ������ ���ʷ� ����Ǵ� �Լ�
+	private boolean isIDDuplicate = true;
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//System.out.println("Init");
-		// Calendar time = Calendar.getInstance();
+		// 자리 차지 안하게 하기
+		idMsg.setManaged(false);
+		passMsg.setManaged(false);
+		passconfirmMsg.setManaged(false);
+		nicknameMsg.setManaged(false);
+		
+		// TODO Auto-generated method stub
 		Date date = new Date();
+		int currentYear = 1900 + date.getYear();
 
-		for (int i = 1941; i <= 1900 + date.getYear(); i++) 
-			yearList.add(String.valueOf(i)); // + "��");
+		for (int i = 1941; i <= currentYear; i++)
+			yearList.add(String.valueOf(i));
 
-		for (int i = 2; i <= 12; i++) 
-			monthList.add(String.valueOf(i)); // + "��");
-		
-		for (int i = 2; i <= 31; i++) 
-			dayList.add(String.valueOf(i));//k + "��");
-		
+		for (int i = 2; i <= 12; i++) {
+			monthList.add(String.valueOf(i));
+			dayList.add(String.valueOf(i));
+		}
+
 		FXCollections.reverse(yearList);
-		yearL.setItems(yearList);
-		yearL.getSelectionModel().select(String.valueOf(1900 + date.getYear()) );
+		selectEmail.setItems(emailList);
+		selectYear.setItems(yearList);
+		selectMonth.setItems(monthList);
+		selectDay.setItems(dayList);
 
-		monthL.setItems(monthList);
-		monthL.getSelectionModel().select("1");
+		selectEmail.getSelectionModel().select("직접입력");
+		selectYear.getSelectionModel().select(String.valueOf(currentYear));
+		selectMonth.getSelectionModel().select("1");
+		selectDay.getSelectionModel().select("1");
 
-		dayL.setItems(dayList);
-		dayL.getSelectionModel().select("1");
+	}
 
-		emailList.setItems(list);
-		emailList.getSelectionModel().select("naver.com");
+	public void emailSelectChange(ActionEvent event) {
+		if (selectEmail.getValue().equals("직접입력")) {
+			inputEmail.setText("");
+			inputEmail.setDisable(false);
+		} else {
+			inputEmail.setText(selectEmail.getValue());
+			inputEmail.setDisable(true);
+		}
+
+
+
 	}
 	
-	public void Duplicate(ActionEvent action)
+	/*public boolean isIdCheck(String id)
 	{
-		System.out.println("Click");
-		String URL = "http://1.240.181.56:8080/auth/duplicate/id";
+		int num = 0;
+		int alphbet = 0;
+		
+		if(id.length() <= 12 && isIdCheck(id))
+		{
+			return true;
+		}
+		
+		for(int i = 0 ; i < id.length(); i++)
+		{
+			char c = id.charAt(i);
+			
+			if((int)c >= 48 && (int)c <= 57) { // 숫자
+				return true;
+			} else if((int)c >= 65 && (int)c <= 90) { // 대문자
+				return true;
+			} else if((int)c >= 97 && (int)c <= 122) {// 소문자
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+	}
+	*/
+	// ( pg - 1) / 10 * 10 + 1
+	public void IdCheckBtn(ActionEvent event) {
+		
+		if (!isIDDuplicate) {
+			errorMsg.setVisible(true);
+			errorMsg.setText("아이디 중복확인을 해주세요");
+			return;
+		}	
+	}
+	
+	public void register(ActionEvent event) {
+
+		String id = inputID.getText();
+		String pw = inputPW.getText();
+		String pwConfirm = inputPWConfirm.getText();
+		String email = inputEmailID.getText() + "@" + inputEmail.getText();
+		String nickname = inputNickname.getText();
+		int year = Integer.parseInt(selectYear.getSelectionModel().getSelectedItem());
+		int month = Integer.parseInt(selectMonth.getSelectionModel().getSelectedItem());
+		int day = Integer.parseInt(selectDay.getSelectionModel().getSelectedItem());
+		String yearStr = year < 10 ? "0" + year : String.valueOf(year);
+		String monthStr = month < 10 ? "0" + month : String.valueOf(month);
+		String dayStr = day < 10 ? "0" + day : String.valueOf(day);
+		String birthday = yearStr + monthStr + dayStr;
+
+		
+		if (!pw.equals(pwConfirm)) {
+			errorMsg.setVisible(true);
+			errorMsg.setText("비밀번호가 일치하지 않습니다.");
+			return;
+		}
+		
+		
+		/*if (!isIDDuplicate) {
+			errorMsg.setVisible(true);
+			errorMsg.setText("아이디 중복확인을 해주세요");
+			return;
+		}*/
+
+		
+		String URL = "http://1.240.181.56:8080/auth/register";
 		try {
-			String doc = Jsoup.connect(URL)
-					.header("API_Version", "1.0")
-					.ignoreContentType(true)
-					.data("id", inputId.getText())
-					.execute().body();
-			
-			System.out.println(doc);
-			
+			Connection.Response resp = Jsoup.connect(URL).method(Method.POST)
+					.ignoreContentType(true).ignoreHttpErrors(true).header("API_Version", "1.0")
+					.data("id", id).data("pw", pw).data("email", email).data("nickname", nickname)
+					.data("birthday", birthday).execute();
+
+			String json = resp.body();
+			System.out.println(json);
+
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObj = (JSONObject) jsonParser.parse(json);
+
+			if (jsonObj.get("status").equals("SUCCESS")) {
+				errorMsg.setVisible(true);
+				errorMsg.setText("회원가입 성공");
+
+				// 창 전환
+				Scene registerScene = new Scene(
+						FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
+				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				window.setScene(registerScene);
+
+
+			} else {
+				if (jsonObj.get("errorCode").equals("CREATE_DUPLICATE")) {
+					errorMsg.setVisible(true);
+					errorMsg.setText("이미 존재하는 아이디 또는 이메일 또는 닉네임 입니다.");
+				}
+			}
+
+
+		} catch (ParseException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	public void Register(ActionEvent action)
-	{
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Message Here...");
-		alert.setHeaderText("Look, an Information Dialog");
-		alert.setContentText("I have a great message for you!");
-		alert.showAndWait().ifPresent(rs -> {
-		    if (rs == ButtonType.OK) {
-		        System.out.println("Pressed OK.");
-		        
-		    }
-		});
+ 
+	/*public void idDuplicateCheck(ActionEvent event) {
 		
-		/*
-		System.out.println("Click");
-		String URL = "http://1.240.181.56:8080/auth/register";
-		try {
-			// id 20, pw > 8, nickname 10, 
-			String id = inputId.getText();
-			String pw = inputPw.getText();
-			String pwConfirm = inputPwConfirm.getText();
-			String emailId = inputEmailId.getText();
-			String email = inputEmail.getText();
-			String emailStr = emailId + "@" + email; // bg0820 @ naver.com
-			// yyyyMMdd 01
-			int year = Integer.parseInt(yearL.getSelectionModel().getSelectedItem());
-			int month = Integer.parseInt(monthL.getSelectionModel().getSelectedItem());
-			String monthStr = month < 10 ? "0" + month : String.valueOf(month);
-			int day = Integer.parseInt(dayL.getSelectionModel().getSelectedItem());
-			String dayStr = day < 10 ? "0" + day : String.valueOf(day);
-			
-			String birthday = year + monthStr + dayStr;
-			String nickname = inputNickname.getText();
-			
-			System.out.println(id);
-			System.out.println(emailStr);
-			System.out.println(birthday);
-			
-			if(!pw.equals(pwConfirm))
-			{
-				System.out.println("D");
-				//label.setText("lalfqjsghrk ekfmqselk");
-				return;
-			}
-	
-			
-			
-			String doc = Jsoup.connect(URL)
-					.method(Connection.Method.POST)
-					.header("API_Version", "1.0")
-					.ignoreContentType(true)
-					.data("id", id).data("pw", pw).data("email", emailStr).data("nickname", nickname).data("birthday", birthday)
-					.execute().body();
-			
-			System.out.println(doc);
-		} catch (HttpStatusException er) {
-			if (er.getStatusCode() == 500) {
-				System.out.println("�̹� ���Ե� ���̵�");
-			}
-		}  catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	}
+		  idMsg.setVisible(true); idMsg.setManaged(true);
+		  
+		  String URL = "http://1.240.181.56:8080/auth/register/duplicate/id";
+		  try {
+		  Connection.Response resp = Jsoup.connect(URL).method(Method.GET) .ignoreContentType(true)
+		  .ignoreHttpErrors(true) .header("API_Version", "1.0").data("id",
+		  inputID.getText()).execute();
+		  
+		  String json = resp.body(); JSONParser jsonParser = new JSONParser(); JSONObject jsonObj =
+		  (JSONObject) jsonParser.parse(json); if(Integer.parseInt(jsonObj.get("data").toString())
+		  == 0) { idMsg.setText("사용가능"); isIDDuplicate = true; } else {
+		  idMsg.setText("존재하는 아이디 입니다."); isIDDuplicate = false; }
+		  
+		  
+		  } catch (ParseException e) { e.printStackTrace(); }
+		  catch (IOException e) { // TODO
+		  (Auto-generated) { block e.printStackTrace(); }
+		 
+	} */
 
+
+	public void backBtn(ActionEvent event) throws IOException{
+		// 창 전환
+		Scene registerScene =
+				new Scene(FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(registerScene);
+
+	}
 }

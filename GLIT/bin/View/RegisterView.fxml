@@ -18,18 +18,18 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../ViewCss/RegisterView.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterViewController">
    <children>
-      <BorderPane HBox.hgrow="ALWAYS">
+      <BorderPane style="-fx-background-color: #CAE8E2#CAE8E2;" HBox.hgrow="ALWAYS">
          <center>
             <ImageView fitHeight="364.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../../img/logo.png" />
+                  <Image url="@../img/logo.png" />
                </image>
             </ImageView>
          </center>
       </BorderPane>
       <BorderPane GridPane.columnIndex="1">
          <center>
-            <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefWidth="380.0" BorderPane.alignment="CENTER">
                <children>
                   <Label disable="true" text="아이디">
                      <VBox.margin>
@@ -38,12 +38,12 @@
                   </Label>
                   <HBox>
                      <children>
-                        <TextField fx:id="inputId" prefHeight="40.0" promptText="영문, 숫자로  8~12자" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="inputID" prefHeight="40.0" promptText="영문, 숫자로  4~12자" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="idDuplicateBtn" minWidth="-Infinity" mnemonicParsing="false" onAction="#Duplicate" prefHeight="40.0" prefWidth="100.0" text="중복확인" textAlignment="CENTER" textFill="WHITE">
+                        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#IdCheckBtn" prefHeight="40.0" prefWidth="100.0" styleClass="customBtn" text="중복확인" textAlignment="CENTER" textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -53,29 +53,42 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="idMsg" styleClass="errorMsgLabel" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Label>
                   <Label disable="true" text="비밀번호">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="inputPw" prefHeight="40.0" promptText="영문, 숫자를 조합하여 8~16자" styleClass="customSelectDesign" VBox.vgrow="ALWAYS">
+                  <PasswordField fx:id="inputPW" prefHeight="40.0" promptText="영문, 숫자를 조합하여 8~16자" styleClass="customInputField" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </PasswordField>
+                  <Label fx:id="passMsg" styleClass="errorMsgLabel" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Label>
                   <Label disable="true" text="비밀번호 확인">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="inputPwConfirm" prefHeight="40.0" promptText="비밀번호 재입력" styleClass="customSelectDesign" VBox.vgrow="ALWAYS">
+                  <PasswordField fx:id="inputPWConfirm" prefHeight="40.0" promptText="비밀번호 재입력" styleClass="customInputField" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Label fx:id="passconfirmMsg" styleClass="errorMsgLabel" text="Label">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
-                  </PasswordField>
+                  </Label>
                   <Label disable="true" text="이메일">
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -83,7 +96,7 @@
                   </Label>
                   <HBox>
                      <children>
-                        <TextField fx:id="inputEmailId" prefHeight="40.0" prefWidth="90.0" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="inputEmailID" prefHeight="40.0" prefWidth="90.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -93,12 +106,12 @@
                               <Insets left="3.0" right="3.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="inputEmail" prefHeight="40.0" prefWidth="100.0" promptText="직접입력" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <TextField id="idMsg" fx:id="inputEmail" prefHeight="40.0" prefWidth="100.0" promptText="직접입력" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <ComboBox fx:id="emailList" prefHeight="40.0" prefWidth="130.0" styleClass="customSelectDesign">
+                        <ComboBox fx:id="selectEmail" onAction="#emailSelectChange" prefHeight="40.0" prefWidth="130.0" styleClass="customInputField">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -118,21 +131,25 @@
                   </Label>
                   <HBox>
                      <children>
-                        <TextField fx:id="inputNickname" prefHeight="40.0" promptText="한글, 영문,  숫자로 8자이내" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="inputNickname" prefHeight="40.0" promptText="한글, 영문,  숫자로 8자이내" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="idDuplicateBtn1" minWidth="-Infinity" mnemonicParsing="false" onAction="#Duplicate" prefHeight="40.0" prefWidth="100.0" text="중복확인" textAlignment="CENTER" textFill="WHITE">
+                        <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="customBtn" text="중복확인" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
+                  <Label fx:id="nicknameMsg" styleClass="errorMsgLabel" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Label>
                   <Label disable="true" text="생년월일">
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -140,7 +157,7 @@
                   </Label>
                   <HBox prefHeight="40.0">
                      <children>
-                        <ComboBox fx:id="yearL" prefHeight="40.0" prefWidth="125.0" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <ComboBox fx:id="selectYear" prefHeight="40.0" prefWidth="125.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -150,7 +167,7 @@
                               <Insets left="3.0" right="3.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="monthL" prefHeight="40.0" prefWidth="125.0" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <ComboBox fx:id="selectMonth" prefHeight="40.0" prefWidth="125.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -160,32 +177,24 @@
                               <Insets left="3.0" right="3.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="dayL" prefHeight="40.0" prefWidth="125.0" styleClass="customSelectDesign" HBox.hgrow="ALWAYS">
+                        <ComboBox fx:id="selectDay" prefHeight="40.0" prefWidth="125.0" styleClass="customInputField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ComboBox>
                         <Label alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" prefWidth="20.0" text="일" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets left="3.0" right="3.0" />
+                              <Insets left="3.0" />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#Register" prefHeight="40.0" prefWidth="200.0" text="회원가입" textAlignment="CENTER" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="380.0" styleClass="customBtn" text="회원가입" textAlignment="CENTER" textFill="WHITE">
                            <HBox.margin>
-                              <Insets right="50.0" />
+                              <Insets />
                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="취소" textAlignment="CENTER" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
                         </Button>
                      </children>
                      <VBox.margin>
@@ -196,10 +205,22 @@
             </VBox>
          </center>
       </BorderPane>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backBtn" prefHeight="20.0" prefWidth="20.0" rotate="225.0" styleClass="backBtn">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="25.0" top="25.0" />
+         </padding>
+      </HBox>
    </children>
    <columnConstraints>
-      <ColumnConstraints percentWidth="50.0" />
-      <ColumnConstraints percentWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="37.0" />
+      <ColumnConstraints hgrow="SOMETIMES" percentWidth="63.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints percentHeight="100.0" />
