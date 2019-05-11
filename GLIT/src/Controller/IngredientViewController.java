@@ -52,8 +52,8 @@ public class IngredientViewController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		selectMenu.setItems(menuList);
-		selectMenu.setValue(menuList.get(0));
+		//selectMenu.setItems(menuList);
+		//selectMenu.setValue(menuList.get(0));
 
 		try {
 			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/search").ignoreContentType(true)

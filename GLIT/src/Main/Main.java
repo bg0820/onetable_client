@@ -16,7 +16,7 @@ public class Main extends Application {
 	@Override
 
 	public void start(Stage primaryStage) throws Exception {
-		try { 
+		try {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
  
