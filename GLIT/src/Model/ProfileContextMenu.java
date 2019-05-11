@@ -71,7 +71,7 @@ public class ProfileContextMenu extends AnchorPane {
 		backAnchor.setMaxHeight(Double.MAX_VALUE);
 
 		backAnchor.getChildren().add(contextMenu);
-		backAnchor.setLeftAnchor(contextMenu, event.getSceneX());
+		backAnchor.setLeftAnchor(contextMenu, event.getSceneX() - 130);
 		backAnchor.setTopAnchor(contextMenu, event.getSceneY());
 
 		backAnchor.setOnMouseClicked(new EventHandler<MouseEvent>() {

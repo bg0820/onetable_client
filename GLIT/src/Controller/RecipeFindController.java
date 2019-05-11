@@ -3,7 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import Model.ProfileContextMenu;
 //import Model.RecipeListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -101,4 +102,10 @@ public void IngredientBtn(ActionEvent event) throws IOException {
 	window.setScene(registerScene);
 
 }
+
+public void contextMenu(MouseEvent event) {
+	ProfileContextMenu pcm = new ProfileContextMenu();
+	pcm.showContextMenu(event);
+}
+
 }
