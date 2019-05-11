@@ -34,7 +34,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/home.png" />
+                              <Image url="@../img/house.png" />
                            </image>
                            <viewport>
                               <Rectangle2D />
@@ -49,7 +49,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/basket.png" />
+                              <Image url="@../img/basket.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -58,7 +58,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/recipes.png" />
+                              <Image url="@../img/recipes.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -67,7 +67,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/dish.png" />
+                              <Image url="@../img/dish.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -76,7 +76,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/badge.png" />
+                              <Image url="@../img/badge.png" />
                            </image>
                         </ImageView>
                      </graphic>

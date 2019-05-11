@@ -28,7 +28,7 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="267.0" style="-fx-background-color: #74CEBD;">
                <children>
-                  <Button alignment="CENTER_RIGHT" graphicTextGap="30.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="243.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="홈" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="홈" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -36,7 +36,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/house.png" />
                            </image>
@@ -46,7 +46,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="243.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -61,7 +61,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="243.0" styleClass="menubutton" text="레시피">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="menubutton" text="레시피">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -73,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" prefHeight="90.0" styleClass="menubutton" text="한상차림">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" styleClass="menubutton" text="한상차림">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -85,12 +85,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="243.0" styleClass="menubutton" text="랭킹">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" styleClass="menubutton" text="랭킹">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" styleClass="menubutton">
+                        <ImageView fitHeight="50.0" fitWidth="50.0">
                            <image>
                               <Image url="@../img/badge.png" />
                            </image>
