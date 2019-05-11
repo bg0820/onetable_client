@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IngredientController">
    <children>
       <GridPane layoutY="-14.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -104,37 +104,43 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
                <children>
-                  <HBox alignment="CENTER_RIGHT">
+                  <HBox>
                      <children>
-                        <ImageView fitHeight="57.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@../img/star.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="46.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="즐겨찾기" textFill="#74cebd">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Circle fill="#74cebd" radius="30.0" stroke="WHITE" strokeType="INSIDE">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Circle>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.4" prefWidth="128.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="김보규님" textFill="#74cebd">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
+                        <Button mnemonicParsing="false" text="Button" />
+                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="contextMenuBtn" mnemonicParsing="false" onMouseClicked="#contextMenu" text="Button" />
+                              <ImageView fitHeight="57.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../img/star.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="46.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="즐겨찾기" textFill="#74cebd">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Circle fill="#74cebd" radius="30.0" stroke="WHITE" strokeType="INSIDE">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Circle>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.4" prefWidth="128.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="김보규님" textFill="#74cebd">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                      <VBox.margin>
                         <Insets right="15.0" top="15.0" />
