@@ -18,6 +18,10 @@
 	-fx-font-size: 9pt;
 }
 
+.passconfirmMsg {
+	-fx-text-fill: #FF5A5A;
+	-fx-font-size: 9pt;
+}
 .customLabel {
 	-fx-font-size: 9pt;
 	-fx-text-fill: #848484;
