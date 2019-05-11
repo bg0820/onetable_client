@@ -17,7 +17,7 @@ public class ProfileContextMenu extends AnchorPane {
 
 	private VBox contextMenu = new VBox();
 	private Label[] contextLabel = new Label[3];
-
+ 
 	public ProfileContextMenu() {
 		contextLabel[0] = new Label();
 		contextLabel[1] = new Label();

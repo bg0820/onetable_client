@@ -123,19 +123,8 @@
                                     <Font size="24.0" />
                                  </font>
                               </Button>
-                              <Circle fill="#74cebd" radius="30.0" stroke="WHITE" strokeType="INSIDE">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Circle>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.4" prefWidth="128.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="김보규님" textFill="#74cebd">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Label>
+                              
+                             
                            </children>
                         </HBox>
                      </children>
@@ -151,7 +140,7 @@
                      <children>
                         <HBox prefHeight="109.0" prefWidth="1038.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addBtn" prefHeight="22.0" prefWidth="118.0" text="Button" />
+                              <Button mnemonicParsing="false" onMouseClicked="#contextMenu" prefHeight="22.0" prefWidth="118.0" text="Button" />
                               <ImageView fitHeight="71.0" fitWidth="78.0">
                                  <image>
                                     <Image url="@../../../../../Desktop/KakaoTalk_20190503_124941069.png" />
