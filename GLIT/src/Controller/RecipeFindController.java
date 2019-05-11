@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,10 +9,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 
 public class RecipeFindController implements Initializable{
 
@@ -80,4 +84,21 @@ public void priceBtn(ActionEvent event) {
 			selectPrice.setManaged(false);
 		}
 	}
+
+
+public void HomeBtn(ActionEvent event) throws IOException {
+	// 창 전환
+	Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/LoginView.fxml")));
+	Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	window.setScene(registerScene);
+
+}
+
+public void IngredientBtn(ActionEvent event) throws IOException {
+	// 창 전환
+	Scene registerScene = new Scene(FXMLLoader.load(getClass().getResource("/View/IngredientView.fxml")));
+	Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	window.setScene(registerScene);
+
+}
 }

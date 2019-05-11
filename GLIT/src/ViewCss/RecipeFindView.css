@@ -84,6 +84,12 @@
 	-fx-background-color : #70c4b4;
 }
 
+.presentBtn {
+	-fx-background-color : #70c4b4;
+	-fx-text-fill : #ffffff;
+	-fx-font-size: 22px;
+}
+
 .listItemBtn {
 	-fx-background-color: #fff;
 }
