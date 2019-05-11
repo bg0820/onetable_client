@@ -30,11 +30,11 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="267.0" styleClass="sideMenuBar" stylesheets="@../ViewCss/RecipeFindView.css">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="sidebutton" stylesheets="@../ViewCss/RecipeFindView.css" text="홈">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HomeBtn" prefHeight="90.0" styleClass="sidebutton" stylesheets="@../ViewCss/RecipeFindView.css" text="홈">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/home.png" />
+                              <Image url="@../img/house.png" />
                            </image>
                            <viewport>
                               <Rectangle2D />
@@ -45,20 +45,20 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="sidebutton" stylesheets="@../ViewCss/RecipeFindView.css" text="재료 가격">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IngredientBtn" prefHeight="90.0" styleClass="sidebutton" stylesheets="@../ViewCss/RecipeFindView.css" text="재료 가격">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/basket.png" />
+                              <Image url="@../img/basket.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="sidebutton" stylesheets="@../ViewCss/RecipeFindView.css" text="레시피">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="presentBtn" stylesheets="@../ViewCss/RecipeFindView.css" text="레시피">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/recipes.png" />
+                              <Image url="@../img/recipes.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -67,7 +67,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/dish.png" />
+                              <Image url="@../img/dish.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -76,7 +76,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/icon_white/badge.png" />
+                              <Image url="@../img/badge.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -95,6 +95,9 @@
                                     <Button mnemonicParsing="false" styleClass="label2" stylesheets="@../ViewCss/RecipeFindView.css" text="등록" />
                                     <Button mnemonicParsing="false" styleClass="label2" text="히스토리" />
                                  </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
                               </HBox>
                               <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
                                  <children>
@@ -114,7 +117,7 @@
                               </HBox>
                            </children>
                            <VBox.margin>
-                              <Insets top="20.0" />
+                              <Insets left="5.0" top="20.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefWidth="1038.0">
