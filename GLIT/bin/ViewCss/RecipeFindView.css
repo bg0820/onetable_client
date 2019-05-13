@@ -33,6 +33,10 @@
 	-fx-background-color : #ffffff;
 }
 
+.user:hover {
+ -fx-text-fill: #60a396;	
+}
+
 .rightpane {
 	-fx-background-color : #ffffff;
 }
@@ -97,4 +101,12 @@
 .listItemVbox {
 	-fx-border-color: #ccc;
 	-fx-border-width: 1px 1px 1px 1px;
+}
+
+.sidebuttonSelect {
+	-fx-background-color : #70c4b4;
+	-fx-border-width: 0px 0px 0px 5px;
+	-fx-border-color: #fff;
+	-fx-text-fill : #ffffff;
+	-fx-font-size: 22px;
 }

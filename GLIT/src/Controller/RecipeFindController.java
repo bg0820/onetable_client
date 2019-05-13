@@ -3,7 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import Model.ProfileContextMenu;
 //import Model.RecipeListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,21 +14,29 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 public class RecipeFindController implements Initializable{
 
 	@FXML
 	private FlowPane listItemArea;
-	
 	@FXML
 	private ComboBox<String> selectFind;
 	@FXML 
 	private ComboBox<String> selectArray;
 	@FXML
 	private ComboBox<String> selectPrice;
+	@FXML
+	FlowPane list;
+	@FXML
+	TilePane listTile;
+	@FXML
+	private ComboBox<String> selectMenu;
 
+	
 	ObservableList<String> findList = FXCollections.observableArrayList("전체",
 			"작성자명",
 			"레시피명",
@@ -46,6 +54,24 @@ public class RecipeFindController implements Initializable{
 			"4만원대",
 			"5만원대"); 
 	
+	ObservableList<String> menuList = FXCollections.observableArrayList("bg0820", "마이페이지", "즐겨찾기", "로그아웃");
+
+	// private boolean isIDDuplicate = true;
+
+	public void selectMenuChange(ActionEvent event) {
+
+		if (selectMenu.getValue().equals("마이페이지")) {
+
+		}
+		else if (selectMenu.getValue().equals("즐겨찾기")) {
+
+		}
+		else if (selectMenu.getValue().equals("로그아웃")) {
+
+		}
+
+
+	}
 	
 	/*public void listItemAdd(ActionEvent evenet)
 	{
@@ -101,4 +127,11 @@ public void IngredientBtn(ActionEvent event) throws IOException {
 	window.setScene(registerScene);
 
 }
+
+
+public void contextMenu(MouseEvent event) {
+	ProfileContextMenu pcm = new ProfileContextMenu();
+	pcm.showContextMenu(event);
+}
+
 }

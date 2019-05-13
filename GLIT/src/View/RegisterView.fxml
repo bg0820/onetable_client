@@ -93,7 +93,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <PasswordField fx:id="inputPWConfirm" prefHeight="40.0" promptText="비밀번호 재입력" styleClass="customInputField" VBox.vgrow="ALWAYS">
+                        <PasswordField fx:id="inputPWConfirm" onKeyReleased="#pwConfirmKeyRelease" prefHeight="40.0" promptText="비밀번호 재입력" styleClass="customInputField" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -145,6 +145,7 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
+                        <Label fx:id="emailMsg" styleClass="emailMsg" text="Label" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="20.0" />
@@ -225,25 +226,28 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </HBox>
                      </children>
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="30.0" />
                      </VBox.margin>
                   </VBox>
                   <VBox>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="380.0" styleClass="customBtn" text="회원가입" textAlignment="CENTER" textFill="WHITE" />
-                        <Label fx:id="errorMsg" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" prefWidth="380.0" styleClass="errorMsgLabel" text="Label">
+                        <Button mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="380.0" styleClass="customBtn" text="회원가입" textAlignment="CENTER" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="5.0" />
-                           </VBox.margin>
-                        </Label>
+                           </VBox.margin></Button>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="errorMsg" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" styleClass="errorMsgLabel" text="Label" />
+                           </children>
+                        </HBox>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </VBox>
                </children>

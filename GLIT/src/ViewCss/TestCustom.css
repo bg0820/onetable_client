@@ -1,0 +1,19 @@
+* {
+	-fx-font-family: 'BM HANNA 11yrs old';
+}
+
+.scrollPane {
+	-fx-background-color: #fff;
+	-fx-border-width: 0px 0px 0px 0px;
+}
+
+.listArea {
+	-fx-background-color: #fff;
+}
+
+.listItem {
+	-fx-background-color: #fff;
+	-fx-border-color: #ccc;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+	-fx-border-width: 1px 1px 1px 1px;
+}

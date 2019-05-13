@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../ViewCss/IngredientView.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IngredientViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IngredientController">
    <children>
       <GridPane layoutY="-14.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -99,13 +99,48 @@
                   </Button>
                </children>
             </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
+               <children>
+                  <HBox>
+                     <children>
+                        <Button mnemonicParsing="false" text="Button" />
+                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="contextMenuBtn" mnemonicParsing="false" onMouseClicked="#contextMenu" text="Button" />
+                              <ImageView fitHeight="57.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../img/star.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="46.0" style="-fx-background-color: #ffffff;" styleClass="label2" stylesheets="@../ViewCss/IngredientView.css" text="즐겨찾기" textFill="#74cebd">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              
+                             
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
                      <children>
                         <HBox prefHeight="109.0" prefWidth="1038.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addBtn" prefHeight="22.0" prefWidth="118.0" text="Button" />
+                              <Button mnemonicParsing="false" onMouseClicked="#contextMenu" prefHeight="22.0" prefWidth="118.0" text="Button" />
                               <ImageView fitHeight="71.0" fitWidth="78.0">
                                  <image>
                                     <Image url="@../../../../../Desktop/KakaoTalk_20190503_124941069.png" />

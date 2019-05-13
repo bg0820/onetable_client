@@ -1,13 +1,18 @@
 package Main;
 
 
+import java.io.IOException;
 import java.net.URL;
 
+import Model.ProfileContextMenu;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -20,11 +25,11 @@ public class Main extends Application {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
 
-			URL url = getClass().getResource("/View/RecipeView.fxml");
+			URL url = getClass().getResource("/View/MainView.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(url);
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-			Parent root = (Parent)fxmlLoader.load(url.openStream());
+			Parent root = (Parent)fxmlLoader.load(url.openStream());  
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setMinWidth(900);
@@ -39,8 +44,11 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public static void main(String[] args) {
-		launch(args);
+		launch(args); 
 	}
 }
+
+

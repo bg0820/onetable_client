@@ -22,6 +22,12 @@
 	-fx-text-fill: #FF5A5A;
 	-fx-font-size: 9pt;
 }
+
+.emailMsg {
+	-fx-text-fill: #FF5A5A;
+	-fx-font-size: 9pt;
+}
+
 .customLabel {
 	-fx-font-size: 9pt;
 	-fx-text-fill: #848484;

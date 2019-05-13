@@ -1,0 +1,20 @@
+.contextMenuArea {
+	-fx-background-color: #fff;
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-border-color: #ccc;
+}
+
+.contextLogout {
+	-fx-border-width: 1px 0px 0px 0px;
+	-fx-border-color: #ccc;
+}
+
+.contextLabel:hover {
+	-fx-background-color: #eee;	
+}
+
+
+
+.backPane {
+	-fx-background-color: red;
+}
