@@ -20,7 +20,7 @@
    <children>
       <BorderPane style="-fx-background-color: #CAE8E2#CAE8E2;" HBox.hgrow="ALWAYS">
          <center>
-            <ImageView fitHeight="364.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="357.0" fitWidth="298.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@../img/logo.png" />
                </image>
