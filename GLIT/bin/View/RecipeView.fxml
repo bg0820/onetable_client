@@ -2,10 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -77,9 +80,70 @@
             </VBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="rightpane" stylesheets="@../ViewCss/RecipeView.css" GridPane.columnIndex="1">
                <content>
-                  <VBox styleClass="rightpane">
-                     <children>
-                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="rightpane">
+                     <center>
+                        <VBox alignment="CENTER" styleClass="rightpane" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../Desktop/me.jpg" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Button mnemonicParsing="false" styleClass="otheruser" text="김보규">
+                                       <graphic>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../Desktop/기프/ava.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" styleClass="foodname" text="제육볶음">
+                                       <HBox.margin>
+                                          <Insets left="100.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label alignment="TOP_LEFT" text="돼지고기에 갖은 양념을 넣어 볶다가 다시 부추 양파 따위와 함께 볶은 음식" />
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label text="재료" />
+                                    <Label text="인분/양">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="가격">
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <HBox>
+                                 <children>
+                                    <TextField prefHeight="40.0" prefWidth="350.0" promptText="댓글을 남겨주세요." />
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="등록" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </center>
+                     <top>
+                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button alignment="TOP_RIGHT" mnemonicParsing="false" styleClass="user" stylesheets="@../ViewCss/RecipeView.css" text="김보규 님">
                                  <graphic>
@@ -95,8 +159,8 @@
                               </Button>
                            </children>
                         </HBox>
-                     </children>
-                  </VBox>
+                     </top>
+                  </BorderPane>
                </content>
             </ScrollPane>
          </children>

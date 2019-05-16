@@ -24,8 +24,8 @@ public class Main extends Application {
 		try {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
-
-			URL url = getClass().getResource("/View/RecipeFind.fxml");
+  
+			URL url = getClass().getResource("/View/RecipeView.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(url); 
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
