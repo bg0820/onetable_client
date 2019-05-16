@@ -40,7 +40,7 @@
                <center>
                   <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="450.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label prefWidth="380.0" stylesheets="@../ViewCss/IdPwFindView.css" text="이메일" textFill="#848484">
+                        <Label prefWidth="400.0" stylesheets="@../ViewCss/IdPwFindView.css" text="이메일" textFill="#848484">
                            <font>
                               <Font size="22.0" />
                            </font>

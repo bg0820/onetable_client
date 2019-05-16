@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -21,6 +20,7 @@ public class IngredientListItem extends Button {
 	private ImageView imgView = new ImageView();
 	private String itemId;
 
+	/*
 	public void RecipeListItem(int width, int height) {
 		super.setPrefWidth(width);
 		super.setPrefHeight(height);
@@ -83,7 +83,7 @@ public class IngredientListItem extends Button {
 		super.setGraphic(vbox);
 
 	}
-
+*/
 
 	public IngredientListItem(double width, double height) {
 		this.width = width;
@@ -96,7 +96,6 @@ public class IngredientListItem extends Button {
 		super.setMnemonicParsing(false);
 		super.getStylesheets().add("ViewCss/IngredientView.css");
 		super.getStyleClass().add("listItemBtn");
-		super.getStyleClass().add("imageItem");
 
 		VBox vbox = new VBox();
 		vbox.getStylesheets().add("ViewCss/IngredientView.css");
@@ -107,13 +106,11 @@ public class IngredientListItem extends Button {
 		titleHBox.getChildren().add(priceDateLab);
 		titleHBox.setMargin(priceDateLab, new Insets(10, 10, 10, 0));
 
-		ImageView imgView = new ImageView();
 		imgView.getStyleClass().add("imageItem");
 		imgView.setFitWidth(width);
 		imgView.setFitHeight(230);
 		imgView.setPickOnBounds(true);
 		imgView.setPreserveRatio(false);
-
 		HBox priceArea = new HBox();
 
 
@@ -130,6 +127,38 @@ public class IngredientListItem extends Button {
 		super.setGraphic(vbox);
 	}
 
+	/*
+	public void IngredientDetailViewListItem() {
+
+
+		super.setMnemonicParsing(false);
+		super.getStylesheets().add("ViewCss/IngredientDetailView.css");
+
+
+		VBox vbox = new VBox();
+		vbox.getStylesheets().add("ViewCss/IngredientDetailView.css");
+		vbox.getStyleClass().add("listItemVBox");
+		HBox titleHBox = new HBox();
+		titleHBox.setAlignment(Pos.CENTER_RIGHT);
+
+		titleHBox.getChildren().add(priceDateLab);
+		titleHBox.setMargin(priceDateLab, new Insets(10, 10, 10, 0));
+
+
+		HBox priceArea = new HBox();
+
+
+		priceArea.getChildren().add(priceLab);
+		priceArea.setHgrow(priceLab, Priority.ALWAYS);
+
+		vbox.getChildren().add(titleHBox);
+		vbox.getChildren().add(displayNameLab);
+		vbox.getChildren().add(priceArea);
+		vbox.setMargin(displayNameLab, new Insets(20, 0, 10, 0));
+		super.setGraphic(vbox);
+	}
+
+*/
 	public void setImageUrl(String url)
 	{
 		imgView.setImage(new Image(url));

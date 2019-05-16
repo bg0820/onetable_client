@@ -1,0 +1,18 @@
+.nameLabel{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 25px;
+	-fx-text-fill : #808080;
+}
+
+
+.priceLabel{
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 25px;
+	-fx-text-fill : #ffffff;
+}
+
+.chartline{
+	-fx-stroke-width : 2px;
+	-fx-stroke : #74cebd;
+	-fx-background-color : #ffffff;
+}
