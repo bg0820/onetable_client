@@ -5,9 +5,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.jsoup.Jsoup;
+import org.jsoup.Connection.Method;
+import org.jsoup.Connection.Response;
 
 import Model.ProfileContextMenu;
-//import Model.RecipeListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +31,7 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 public class RecipeFindController implements Initializable{
+
 
 	@FXML
 	private CheckComboBox<String> selectPrice;
@@ -52,7 +58,6 @@ public class RecipeFindController implements Initializable{
 	
 	ObservableList<String> arrayList = FXCollections.observableArrayList("정확도순",
 			"최신순",
-			"평점순",
 			"가격순"); 
 	
 	ObservableList<String> priceList = FXCollections.observableArrayList("가격낮은순",
@@ -83,11 +88,11 @@ public class RecipeFindController implements Initializable{
 
 	}
 	
-	/*public void listItemAdd(ActionEvent evenet)
-	{
+	/*public void listItemAdd(ActionEvent event)
+ {
 		RecipeListItem recipeListItem = new RecipeListItem(290, 350);
 		listItemArea.getChildren().add(recipeListItem);
-	}*/
+	} */
 
 	
 @Override
@@ -107,6 +112,7 @@ public void initialize(URL location, ResourceBundle resources) {
 	//selectFind.getSelectionModel().select("전체");
 	
 }
+
 
 public void priceBtn(ActionEvent event) {
 

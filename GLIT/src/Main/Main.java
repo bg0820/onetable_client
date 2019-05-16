@@ -24,13 +24,13 @@ public class Main extends Application {
 		try {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
-  
-			URL url = getClass().getResource("/View/RecipeFind.fxml");
+    
+			URL url = getClass().getResource("/View/RecipeView.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(url);  
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory()); 
-			Parent root = (Parent)fxmlLoader.load(url.openStream());  
-			Scene scene = new Scene(root);
+			Parent root = (Parent)fxmlLoader.load(url.openStream()); 
+			Scene scene = new Scene(root);  
 			primaryStage.setScene(scene);
 			primaryStage.setMinWidth(900);
 			primaryStage.setMinHeight(600); 
@@ -47,7 +47,7 @@ public class Main extends Application {
 	
 
 	public static void main(String[] args) {
-		launch(args); 
+		launch(args);
 	}
 }
 

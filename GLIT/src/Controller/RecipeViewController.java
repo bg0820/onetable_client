@@ -19,11 +19,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-public class RecipeViewController implements Initializable{
+public class RecipeViewController implements Initializable {
 
 	@FXML
 	private ComboBox<String> selectMenu;
-	
+ 
 	ObservableList<String> menuList = FXCollections.observableArrayList("bg0820", "마이페이지", "즐겨찾기", "로그아웃");
 
 	// private boolean isIDDuplicate = true;
@@ -39,17 +39,14 @@ public class RecipeViewController implements Initializable{
 		}
 
 	}
-	
-@Override
-public void initialize(URL location, ResourceBundle resources) {
-	// TODO Auto-generated method stub
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 
-	
-	
-}
+	}
 	/*
-	 * public void listItemAdd(ActionEvent evenet) { RecipeListItem recipeListItem =
+	 * public void listItemAdd(ActionEvent event) { RecipeListItem recipeListItem =
 	 * new RecipeListItem(290, 350); listItemArea.getChildren().add(recipeListItem);
 	 * }
 	 */

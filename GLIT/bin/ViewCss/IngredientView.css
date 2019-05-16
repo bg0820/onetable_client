@@ -14,8 +14,15 @@
 
 .listItemBtn {
 	-fx-background-color: white;
-	-fx-border-color: #ccc;
 }
+
+.listItemVBox {
+	-fx-border-color: #74cebd;
+}
+.imgView {
+	-fx-border-color: #74cebd;
+}
+
 .menubutton{
 	-fx-background-color: #74cebd;
 	-fx-font-family : 'BM HANNA 11yrs old';
@@ -27,4 +34,52 @@
 	-fx-font-family : 'BM HANNA 11yrs old';
 	-fx-font-size: 22px;
 	-fx-text-fill : #ffffff;
+}
+
+.idButton{
+	
+	-fx-background-color : #ffffff;
+	-fx-font-family : 'BM HANNA 11yrs old';
+	-fx-font-size: 24px;
+	-fx-text-fill : #74cebd;
+}
+
+.idButton:hover{
+	-fx-text-fill : #60a396;
+}
+
+.menubutton:hover{
+   -fx-background-color : #70c4b4;
+}
+
+.sidebuttonSelect{
+   -fx-background-color : #70c4b4;
+   -fx-border-width: 0px 0px 0px 5px;
+   -fx-border-color: #fff;
+   -fx-text-fill : #ffffff;
+   -fx-font-size: 22px;
+}
+
+.searchLabel {
+	-fx-background-color: #fff;
+	-fx-border-color: #CCC;
+	-fx-font-family: 'BM HANNA 11yrs old';
+	-fx-font-size: 15pt;
+}
+
+.searchLabel:focused {
+	-fx-border-color: #74CEBD;
+}
+
+.searchBtn{
+	-fx-border-color : #74CEBD;
+	-fx-text-fill : #74cebd;
+	-fx-font-size : 20px;
+	-fx-background-color : #fff;
+	-fx-font-family : 'BM HANNA 11yrs old';
+}
+.searchBtn:hover {
+	-fx-background-color: #74CEBD;
+	-fx-text-fill: #fff;
+	
 }

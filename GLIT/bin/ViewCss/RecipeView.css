@@ -65,3 +65,15 @@
 	-fx-border-color: #ccc;
 	-fx-border-width: 1px 1px 1px 1px;
 }
+
+.backBtn {
+	-fx-border-width: 4px 4px 0px 0px;
+	-fx-border-color: #ccc;
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+
+}
+
+.backBtn:hover {
+	-fx-border-color: #cdcdcd;
+}
