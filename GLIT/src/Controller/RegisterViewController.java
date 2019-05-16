@@ -10,6 +10,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +47,8 @@ public class RegisterViewController implements Initializable {
 	@FXML
 	private Label nicknameMsg;
 	@FXML
+	private Label emailMsg;
+	@FXML
 	private PasswordField inputPW;
 	@FXML
 	private PasswordField inputPWConfirm;
@@ -73,9 +78,44 @@ public class RegisterViewController implements Initializable {
 	private boolean idDuplicateCheck = false;
 	private boolean idCheck = false;
 	private boolean nicknameDuplicate = false;
-	private boolean nicknameDuplicateCheck= false;
-	
-	
+	private boolean nicknameDuplicateCheck = false;
+	private boolean pwCheck = false;
+	private boolean pwConfirmCheck = false;
+	private boolean emailcheck = false;
+
+	public void emailCheck(String email)
+	{
+
+		String URL = "http://1.240.181.56:8080/auth/register/duplicate/email";
+		try {
+			Connection.Response resp = Jsoup.connect(URL).method(Method.GET).ignoreContentType(true)
+					.ignoreHttpErrors(true).header("API_Version", "1.0").data("email", email).execute();
+
+			String json = resp.body();
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObj = (JSONObject) jsonParser.parse(json);
+			System.out.println(json);
+			System.out.println(jsonObj);
+			if (Integer.parseInt(jsonObj.get("data").toString()) == 0) {
+
+				emailMsg.setText("가입 가능합니다.");
+				emailMsg.setVisible(true);
+				emailMsg.setManaged(true);
+				emailcheck = true;
+			} else {
+
+				emailMsg.setVisible(true);
+				emailMsg.setManaged(true);
+				emailMsg.setText("가입된 이메일입니다.");
+				emailcheck = false;
+			}
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (IOException e) { // TODO (Auto-generated) { block e.printStackTrace(); }
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// 자리 차지 안하게 하기
@@ -84,6 +124,42 @@ public class RegisterViewController implements Initializable {
 		passconfirmMsg.setManaged(false);
 		nicknameMsg.setManaged(false);
 		errorMsg.setManaged(false);
+		emailMsg.setManaged(false);
+
+		inputEmail.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				// TODO Auto-generated method stub
+				if(!newValue)
+				{
+					if(inputEmailID.getText().length() > 0 && inputEmail.getText().length() > 0)
+					{
+						emailCheck(inputEmailID.getText() + "@" + inputEmail.getText());
+					}
+					System.out.println("Email Focus Out");
+					
+				}
+			}
+		});
+		
+		inputEmailID.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				// TODO Auto-generated method stub
+				if(!newValue)
+				{
+					if(inputEmailID.getText().length() > 0 && inputEmail.getText().length() > 0)
+					{
+					
+						emailCheck(inputEmailID.getText() + "@" + inputEmail.getText());
+					}
+					System.out.println("EmailId Focus Out");
+				}
+			}
+		});
+		
 		
 		// TODO Auto-generated method stub
 		Date date = new Date();
@@ -136,23 +212,44 @@ public class RegisterViewController implements Initializable {
 	 */
 	// ( pg - 1) / 10 * 10 + 1
 
-	public void idKeyRelease(KeyEvent event) { 
-		//System.out.println(event.getCode());
+	public boolean isValid(String text, String type) {
+		if (type.equals("ID")) {
+			if (text.matches("(^[A-Z|a-z|0-9]*$)"))
+				return true;
+			else
+				return false;
+		} else if (type.equals("PW")) {
+			if (text.matches("(^[A-Z|a-z|0-9|!|@|%|#|$|^|&|*|(|)|_|+|-]*$)"))
+				return true;
+			else
+				return false;
+		}
+		
+		return false;
+
+	}
+
+	public void idKeyRelease(KeyEvent event) {
+		// System.out.println(event.getCode());
 		String id = inputID.getText();
 
-		
-		if(id.length() >= 4 && id.length() <= 12) // 제대로 쓴거
-		{
-			idMsg.setManaged(false);
-			idMsg.setVisible(false);
-			idCheck = true;
-		}
-		else
-		{
+		if (!isValid(id, "ID")) {
 			idMsg.setManaged(true);
 			idMsg.setVisible(true);
 			idMsg.setText("영문, 숫자로  4~12자이내로 쓰시오.");
 			idCheck = false;
+		} else {
+			if (id.length() >= 4 && id.length() <= 12) // 제대로 쓴거
+			{
+				idMsg.setManaged(false);
+				idMsg.setVisible(false);
+				idCheck = true;
+			} else {
+				idMsg.setManaged(true);
+				idMsg.setVisible(true);
+				idMsg.setText("영문, 숫자로  4~12자이내로 쓰시오.");
+				idCheck = false;
+			}
 		}
 	}
 
@@ -194,25 +291,34 @@ public class RegisterViewController implements Initializable {
 		}
 	}
 
-	public void pwKeyRelease(KeyEvent event) { 
-		//System.out.println(event.getCode());
+	public void pwKeyRelease(KeyEvent event) {
+		// System.out.println(event.getCode());
 		String pw = inputPW.getText();
-
 		
-		if(pw.length() >= 8 && pw.length() <= 16) // 제대로 쓴거
-		{
-			passMsg.setManaged(false);
-			passMsg.setVisible(false);
-		}
-		else
+
+		if (!isValid(pw, "PW"))
 		{
 			passMsg.setManaged(true);
 			passMsg.setVisible(true);
 			passMsg.setText("영문, 숫자로  8~16자이내로 쓰시오.");
+			pwCheck = false;
+			
+		}else {
+			if (pw.length() >= 8 && pw.length() <= 16) // 제대로 쓴거
+			{
+				passMsg.setManaged(false);
+				passMsg.setVisible(false);
+				pwCheck = true;
+			} else {
+				passMsg.setManaged(true);
+				passMsg.setVisible(true);
+				passMsg.setText("영문, 숫자로  8~16자이내로 쓰시오.");
+				pwCheck = false;
+			}
 		}
+		
 	}
 
-	
 	public void register(ActionEvent event) {
 
 		String id = inputID.getText();
@@ -233,14 +339,13 @@ public class RegisterViewController implements Initializable {
 		 * errorMsg.setText("아이디 중복확인을 해주세요"); return; }
 		 */
 
-		if(!idCheck || !idDuplicateCheck || !nicknameDuplicate || !nicknameDuplicateCheck)
-		{
+		if (!emailcheck || !idCheck || !idDuplicateCheck || !nicknameDuplicate || !nicknameDuplicateCheck || !pwCheck || !pwConfirmCheck) {
 			errorMsg.setVisible(true);
 			errorMsg.setManaged(true);
 			errorMsg.setText("회원가입 실패");
 			return;
 		}
-		
+
 		String URL = "http://1.240.181.56:8080/auth/register";
 		try {
 			Connection.Response resp = Jsoup.connect(URL).method(Method.POST).ignoreContentType(true)
@@ -253,7 +358,7 @@ public class RegisterViewController implements Initializable {
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) jsonParser.parse(json);
 
-			if (jsonObj.get("status").equals("SUCCESS")) { 
+			if (jsonObj.get("status").equals("SUCCESS")) {
 				errorMsg.setManaged(false);
 				errorMsg.setVisible(false);
 				errorMsg.setText("회원가입 성공");
@@ -278,28 +383,28 @@ public class RegisterViewController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	public void nicknameKeyRelease(KeyEvent event) { 
-		//System.out.println(event.getCode());
+
+	public void nicknameKeyRelease(KeyEvent event) {
+		// System.out.println(event.getCode());
 		String nickname = inputNickname.getText();
 
 		
-		if(nickname.length() <=8) // 제대로 쓴거
-		{
-			nicknameMsg.setManaged(false);
-			nicknameMsg.setVisible(false);
-			nicknameDuplicate = true;
-			
-		}
-		else
-		{
-			nicknameMsg.setManaged(true);
-			nicknameMsg.setVisible(true);
-			nicknameMsg.setText("한글, 영문, 숫자로 8자이내");
-			nicknameDuplicate = false;
-		}
+			if (nickname.length() <= 8) // 제대로 쓴거
+			{
+				nicknameMsg.setManaged(false);
+				nicknameMsg.setVisible(false);
+				nicknameDuplicate = true;
+
+			} else {
+				nicknameMsg.setManaged(true);
+				nicknameMsg.setVisible(true);
+				nicknameMsg.setText("8자이내");
+				nicknameDuplicate = false;
+			}
+		
+		
 	}
-	
+
 	public void NicknameCheckBtn(ActionEvent event) {
 
 		if (!nicknameDuplicate) {
@@ -310,6 +415,23 @@ public class RegisterViewController implements Initializable {
 		}
 	}
 
+	public void pwConfirmKeyRelease(KeyEvent event) {
+		if(!inputPW.getText().equals(inputPWConfirm.getText()))
+		{
+			// 같지 않을때
+			passconfirmMsg.setManaged(true);
+			passconfirmMsg.setVisible(true);
+			passconfirmMsg.setText("비밀번호가 일치하지 않습니다.");
+			pwConfirmCheck = false;
+		}
+		else {
+			passconfirmMsg.setManaged(false);
+			passconfirmMsg.setVisible(false);
+			// 같을떄
+			pwConfirmCheck = true;
+		}
+		 
+	}
 	
 	public void nicknameDuplicateCheck(ActionEvent event) {
 
@@ -319,7 +441,8 @@ public class RegisterViewController implements Initializable {
 		String URL = "http://1.240.181.56:8080/auth/register/duplicate/nickname";
 		try {
 			Connection.Response resp = Jsoup.connect(URL).method(Method.GET).ignoreContentType(true)
-					.ignoreHttpErrors(true).header("API_Version", "1.0").data("nickname", inputNickname.getText()).execute();
+					.ignoreHttpErrors(true).header("API_Version", "1.0").data("nickname", inputNickname.getText())
+					.execute();
 
 			String json = resp.body();
 			JSONParser jsonParser = new JSONParser();
@@ -339,6 +462,8 @@ public class RegisterViewController implements Initializable {
 		}
 	}
 
+
+	
 	/*
 	 * public void pwKeyRelease(KeyEvent event) {
 	 * 

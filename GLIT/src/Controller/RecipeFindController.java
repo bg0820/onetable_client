@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.CheckComboBox;
+
+import Model.ProfileContextMenu;
 //import Model.RecipeListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,22 +16,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 public class RecipeFindController implements Initializable{
 
 	@FXML
+	private CheckComboBox<String> selectPrice;
+	@FXML
 	private FlowPane listItemArea;
-	
 	@FXML
 	private ComboBox<String> selectFind;
 	@FXML 
 	private ComboBox<String> selectArray;
+	//@FXML
+	//private ComboBox<String> selectPrice;
 	@FXML
-	private ComboBox<String> selectPrice;
+	FlowPane list;
+	@FXML
+	TilePane listTile;
+	@FXML
+	private ComboBox<String> selectMenu;
 
+	
 	ObservableList<String> findList = FXCollections.observableArrayList("전체",
 			"작성자명",
 			"레시피명",
@@ -39,13 +55,33 @@ public class RecipeFindController implements Initializable{
 			"평점순",
 			"가격순"); 
 	
-	ObservableList<String> priceList = FXCollections.observableArrayList("1만원 이하",
+	ObservableList<String> priceList = FXCollections.observableArrayList("가격낮은순",
+			"가격높은순",
+			"1만원이하",
 			"1만원대",
 			"2만원대",
 			"3만원대",
 			"4만원대",
-			"5만원대"); 
+			"5만원이상"); 
 	
+	ObservableList<String> menuList = FXCollections.observableArrayList("bg0820", "마이페이지", "즐겨찾기", "로그아웃");
+
+	// private boolean isIDDuplicate = true;
+
+	public void selectMenuChange(ActionEvent event) {
+
+		if (selectMenu.getValue().equals("마이페이지")) {
+
+		}
+		else if (selectMenu.getValue().equals("즐겨찾기")) {
+
+		}
+		else if (selectMenu.getValue().equals("로그아웃")) {
+
+		}
+
+
+	}
 	
 	/*public void listItemAdd(ActionEvent evenet)
 	{
@@ -67,7 +103,7 @@ public void initialize(URL location, ResourceBundle resources) {
 	selectArray.setItems(arrayList);
 	//selectArray.getSelectionModel().select("전체");
 	
-	selectPrice.setItems(priceList);
+	selectPrice.getItems().addAll(priceList);
 	//selectFind.getSelectionModel().select("전체");
 	
 }
@@ -101,4 +137,11 @@ public void IngredientBtn(ActionEvent event) throws IOException {
 	window.setScene(registerScene);
 
 }
+
+
+public void contextMenu(MouseEvent event) {
+	ProfileContextMenu pcm = new ProfileContextMenu();
+	pcm.showContextMenu(event);
+}
+
 }
