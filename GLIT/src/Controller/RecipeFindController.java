@@ -3,6 +3,9 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.controlsfx.control.CheckComboBox;
+
 import Model.ProfileContextMenu;
 //import Model.RecipeListItem;
 import javafx.collections.FXCollections;
@@ -13,7 +16,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
@@ -22,13 +28,15 @@ import javafx.stage.Stage;
 public class RecipeFindController implements Initializable{
 
 	@FXML
+	private CheckComboBox<String> selectPrice;
+	@FXML
 	private FlowPane listItemArea;
 	@FXML
 	private ComboBox<String> selectFind;
 	@FXML 
 	private ComboBox<String> selectArray;
-	@FXML
-	private ComboBox<String> selectPrice;
+	//@FXML
+	//private ComboBox<String> selectPrice;
 	@FXML
 	FlowPane list;
 	@FXML
@@ -47,12 +55,14 @@ public class RecipeFindController implements Initializable{
 			"평점순",
 			"가격순"); 
 	
-	ObservableList<String> priceList = FXCollections.observableArrayList("1만원 이하",
+	ObservableList<String> priceList = FXCollections.observableArrayList("가격낮은순",
+			"가격높은순",
+			"1만원이하",
 			"1만원대",
 			"2만원대",
 			"3만원대",
 			"4만원대",
-			"5만원대"); 
+			"5만원이상"); 
 	
 	ObservableList<String> menuList = FXCollections.observableArrayList("bg0820", "마이페이지", "즐겨찾기", "로그아웃");
 
@@ -93,7 +103,7 @@ public void initialize(URL location, ResourceBundle resources) {
 	selectArray.setItems(arrayList);
 	//selectArray.getSelectionModel().select("전체");
 	
-	selectPrice.setItems(priceList);
+	selectPrice.getItems().addAll(priceList);
 	//selectFind.getSelectionModel().select("전체");
 	
 }

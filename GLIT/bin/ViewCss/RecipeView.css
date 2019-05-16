@@ -5,6 +5,21 @@
 	-fx-text-fill : #74CEBD;
 	-fx-background-color : #ffffff;
 }
+.user:hover {
+ -fx-text-fill: #60a396;
+ 	
+}
+
+.otheruser {
+	-fx-font-size : 16px;
+	-fx-text-fill: #60a396;
+	-fx-background-color : #ffffff;
+}
+
+.foodname {
+	-fx-font-size: 17px;
+	-fx-text-fill : black;
+}
 
 .rightpane {
 	-fx-background-color : #ffffff;

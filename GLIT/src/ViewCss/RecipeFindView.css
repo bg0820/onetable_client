@@ -74,6 +74,13 @@
 	-fx-text-fill: #848484;
 	
 }
+
+.CheckComboBox {
+	-fx-background-color: #fff;
+	-fx-border-color: #CCC;
+	-fx-text-fill: #848484;
+	
+}
 .sideMenuBar {
 	-fx-background-color:  #74CEBD;
 }

@@ -160,7 +160,7 @@
                         </Label>
                         <HBox>
                            <children>
-                              <TextField fx:id="inputNickname" onKeyReleased="#nicknameKeyRelease" prefHeight="40.0" promptText="한글, 영문,  숫자로 8자이내" styleClass="customInputField" HBox.hgrow="ALWAYS">
+                              <TextField fx:id="inputNickname" onKeyReleased="#nicknameKeyRelease" prefHeight="40.0" promptText="8자이내" styleClass="customInputField" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>

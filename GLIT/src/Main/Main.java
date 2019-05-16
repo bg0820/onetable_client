@@ -25,15 +25,15 @@ public class Main extends Application {
 			Font f = Font.loadFont(getClass().getResourceAsStream("/Font/BMHANNA.ttf"), 14);
 			System.out.println(f);
 
-			URL url = getClass().getResource("/View/MainView.fxml");
+			URL url = getClass().getResource("/View/RecipeFind.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(url);
+			fxmlLoader.setLocation(url); 
 			fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
 			Parent root = (Parent)fxmlLoader.load(url.openStream());  
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setMinWidth(900);
-			primaryStage.setMinHeight(600);
+			primaryStage.setMinHeight(600); 
 			primaryStage.setTitle("한상차림");
 			// 창 크기 조정 못하게
 			//primaryStage.setResizable(false);
