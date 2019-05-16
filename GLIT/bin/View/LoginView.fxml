@@ -44,7 +44,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="inputID" prefHeight="40.0" styleClass="customIdInputField" stylesheets="@../ViewCss/LoginView.css">
+                        <TextField fx:id="inputID" prefHeight="40.0" styleClass="customInputField" stylesheets="@../ViewCss/LoginView.css">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

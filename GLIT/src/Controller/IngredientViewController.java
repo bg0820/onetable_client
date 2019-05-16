@@ -11,20 +11,34 @@ import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 
 import Model.IngredientListItem;
+import Model.ProfileContextMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
 public class IngredientViewController implements Initializable {
 
 	@FXML
-	FlowPane listArea;
+	private FlowPane listArea;
 	@FXML
 	private ComboBox<String> selectMenu;
+	@FXML
+	private Button contextMenuBtn;
+
+	public void searchBtn(ActionEvent event) {
+		System.out.println("rjator");
+	}
+
+	public void contextMenu(MouseEvent event) {
+		ProfileContextMenu pcm = new ProfileContextMenu();
+		pcm.showContextMenu(event);
+	}
 
 	ObservableList<String> menuList = FXCollections.observableArrayList("bg0820", "마이페이지", "즐겨찾기", "로그아웃");
 
@@ -34,31 +48,24 @@ public class IngredientViewController implements Initializable {
 
 		if (selectMenu.getValue().equals("마이페이지")) {
 
-		}
-		else if (selectMenu.getValue().equals("즐겨찾기")) {
+		} else if (selectMenu.getValue().equals("즐겨찾기")) {
+
+		} else if (selectMenu.getValue().equals("로그아웃")) {
 
 		}
-		else if (selectMenu.getValue().equals("로그아웃")) {
-
-		}
-
-
-	}
-
-	public void addBtn(ActionEvent evenet) {
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		//selectMenu.setItems(menuList);
-		//selectMenu.setValue(menuList.get(0));
+		// selectMenu.setItems(menuList);
+		// selectMenu.setValue(menuList.get(0));
 
 		try {
-			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/search").ignoreContentType(true)
-					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("query", "물")
-					.execute();
+			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/search/all").ignoreContentType(true)
+					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("startNum", "0")
+					.data("itemNum", "30").execute();
 
 			if (response.statusCode() == 200) {
 				System.out.println(response.body());
@@ -67,28 +74,27 @@ public class IngredientViewController implements Initializable {
 
 				if (jsonObj.get("status").toString().equals("SUCCESS")) {
 					JSONArray jsonArray = (JSONArray) jsonObj.get("data");
-
+					System.out.println(jsonArray.size());
 					for (int i = 0; i < jsonArray.size(); i++) {
-						System.out.println("===================================");
 						JSONObject dataItem = (JSONObject) jsonArray.get(i);
-						System.out.println(dataItem.get("currentPrice"));
-						System.out.println(dataItem.get("priceDate"));
-						System.out.println(dataItem.get("queryCnt"));
-						System.out.println(dataItem.get("displayName"));
-						System.out.println(dataItem.get("imgUrl"));
+
+						if (dataItem.get("priceDate") == null || dataItem.get("imgUrl") == null
+								|| dataItem.get("ingredientItemId") == null)
+							continue;
 
 						IngredientListItem ingredientListItem = new IngredientListItem(295, 450);
-						ingredientListItem.setPrice(dataItem.get("currentPrice").toString());
+						ingredientListItem.setPrice(dataItem.get("price").toString());
 						ingredientListItem.setPriceDate(dataItem.get("priceDate").toString());
 						ingredientListItem.setDisplayName(dataItem.get("displayName").toString());
 						ingredientListItem.setImageUrl(dataItem.get("imgUrl").toString());
+						ingredientListItem.setIngredientItemId(dataItem.get("ingredientItemId").toString());
 						listArea.getChildren().add(ingredientListItem);
 
 					}
 				}
 			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}

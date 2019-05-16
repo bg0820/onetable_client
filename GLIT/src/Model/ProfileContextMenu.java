@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.IOException;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -17,7 +18,7 @@ public class ProfileContextMenu extends AnchorPane {
 
 	private VBox contextMenu = new VBox();
 	private Label[] contextLabel = new Label[3];
- 
+
 	public ProfileContextMenu() {
 		contextLabel[0] = new Label();
 		contextLabel[1] = new Label();
@@ -71,7 +72,7 @@ public class ProfileContextMenu extends AnchorPane {
 		backAnchor.setMaxHeight(Double.MAX_VALUE);
 
 		backAnchor.getChildren().add(contextMenu);
-		backAnchor.setLeftAnchor(contextMenu, event.getSceneX());
+		backAnchor.setLeftAnchor(contextMenu, event.getSceneX()-130);
 		backAnchor.setTopAnchor(contextMenu, event.getSceneY());
 
 		backAnchor.setOnMouseClicked(new EventHandler<MouseEvent>() {
