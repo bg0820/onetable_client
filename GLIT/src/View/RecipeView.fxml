@@ -145,7 +145,7 @@
                      <top>
                         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" styleClass="user" stylesheets="@../ViewCss/RecipeView.css" text="김보규 님">
+                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" onMouseClicked="#contextMenu" styleClass="user" stylesheets="@../ViewCss/RecipeView.css" text="김보규 님">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

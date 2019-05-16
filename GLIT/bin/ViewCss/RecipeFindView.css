@@ -10,6 +10,7 @@
 	-fx-font-size: 24px;
 	-fx-text-fill : #ccc;
 	-fx-background-color : #ffffff;
+	-fx-cursor: hand;
 }
 
 .label2:hover {
@@ -31,6 +32,7 @@
 	-fx-font-size: 24px;
 	-fx-text-fill : #74CEBD;
 	-fx-background-color : #ffffff;
+	-fx-cursor: hand;
 }
 
 .user:hover {
@@ -46,6 +48,7 @@
 	-fx-border-color: #CCC;
 	-fx-border-width: 1px 1px 1px 1px;
 	-fx-text-fill: black;
+	-fx-cursor: hand;
 }
 
 .searchBtn:hover {
@@ -89,6 +92,7 @@
 	-fx-background-color : #74CEBD;
 	-fx-text-fill : #ffffff;
 	-fx-font-size: 22px;
+	-fx-cursor: hand;
 }
 
 .sidebutton:hover{

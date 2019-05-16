@@ -58,6 +58,7 @@
 	-fx-background-radius: 0;
 	-fx-border-color: #74CEBD;
 	-fx-border-width: 1px;
+	-fx-cursor: hand;
 }
 
 .customBtn:hover {
@@ -70,6 +71,7 @@
 	-fx-border-width: 4px 4px 0px 0px;
 	-fx-border-color: #fff;
 	-fx-background-color: transparent;
+	-fx-cursor: hand;
 
 }
 
