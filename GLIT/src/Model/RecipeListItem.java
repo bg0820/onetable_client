@@ -1,4 +1,4 @@
-/*package Model;
+package Model;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -74,5 +74,29 @@ public class RecipeListItem extends Button {
 		super.setGraphic(vbox);
 		
 	}
+
+	public void setPrice(String price) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setPriceDate(String priceDate) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDisplayName(String displayName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setImageUrl(String url) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRecipeItemId(String recipeItemId) {
+		// TODO Auto-generated method stub
+		
+	}
 }
-*/

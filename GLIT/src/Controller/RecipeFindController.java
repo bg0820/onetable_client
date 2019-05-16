@@ -12,7 +12,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 
+import Model.IngredientListItem;
 import Model.ProfileContextMenu;
+import Model.RecipeListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -111,6 +113,43 @@ public void initialize(URL location, ResourceBundle resources) {
 	selectPrice.getItems().addAll(priceList);
 	//selectFind.getSelectionModel().select("전체");
 	
+
+	try {
+		Response response = Jsoup.connect("http://1.240.181.56:8080/recipe/search/all").ignoreContentType(true)
+				.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("startNum", "0")
+				.data("itemNum", "80").execute();
+
+		if (response.statusCode() == 200) {
+			System.out.println(response.body());
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObj = (JSONObject) jsonParser.parse(response.body());
+
+			if (jsonObj.get("status").toString().equals("SUCCESS")) {
+				JSONArray jsonArray = (JSONArray) jsonObj.get("data");
+				System.out.println(jsonArray.size());
+				for (int i = 0; i < jsonArray.size(); i++) {
+					JSONObject dataItem = (JSONObject) jsonArray.get(i);
+
+					if (dataItem.get("priceDate") == null || dataItem.get("imgUrl") == null
+							|| dataItem.get("recipeItemId") == null)
+						continue;
+
+					RecipeListItem recipeListItem = new RecipeListItem(295, 450);
+
+					recipeListItem.setPrice(dataItem.get("price").toString());
+					recipeListItem.setPriceDate(dataItem.get("priceDate").toString());
+					recipeListItem.setDisplayName(dataItem.get("displayName").toString());
+					recipeListItem.setImageUrl(dataItem.get("imgUrl").toString());
+					recipeListItem.setRecipeItemId(dataItem.get("recipeItemId").toString());
+					listItemArea.getChildren().add(recipeListItem);
+
+				}
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
 }
 
 
