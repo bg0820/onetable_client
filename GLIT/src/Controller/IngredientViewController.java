@@ -81,7 +81,7 @@ public class IngredientViewController implements Initializable {
 				if (jsonObj.get("status").toString().equals("SUCCESS")) {
 					JSONArray jsonArray = (JSONArray) jsonObj.get("data");
 					System.out.println(jsonArray.size());
-					for (int i = 0; i < jsonArray.size(); i++) {
+					for(int i = 0; i < jsonArray.size(); i++) {
 						JSONObject dataItem = (JSONObject) jsonArray.get(i);
 
 						if (dataItem.get("priceDate") == null || dataItem.get("imgUrl") == null

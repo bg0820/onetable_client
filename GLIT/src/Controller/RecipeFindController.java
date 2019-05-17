@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.controlsfx.control.CheckComboBox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.jsoup.Jsoup;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
+import org.jsoup.Jsoup;
 
-import Model.IngredientListItem;
 import Model.ProfileContextMenu;
 import Model.RecipeListItem;
 import javafx.collections.FXCollections;
@@ -23,12 +21,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -114,12 +109,20 @@ public class RecipeFindController implements Initializable {
 					JSONArray objArray = (JSONArray) jsonData.get("obj");
 					for (int i = 0; i < objArray.size(); i++) {
 						JSONObject data = (JSONObject) objArray.get(i);
-						data.get("recipeIdx");
-						data.get("name");
-						data.get("nickName");
-						data.get("recipeImg");
-
+						String recipeIdx = data.get("recipeIdx").toString();
+						String recipeName = data.get("name").toString();
+						String nickName = data.get("nickName").toString();
+						String recipeImg = data.get("recipeImg").toString();
+						String price = "";
+						if(data.containsKey("price"))
+						price  = data.get("price").toString();
+						
 						RecipeListItem recipeListItem = new RecipeListItem(295, 450);
+						recipeListItem.setRecipeImage(recipeImg);
+						recipeListItem.setRecipeTitle(recipeName);
+						recipeListItem.setNickName(nickName);
+						recipeListItem.setPriceLab(price);
+						
 						recipeListItem.setOnAction(new EventHandler<ActionEvent>() {
 
 							@Override
@@ -127,11 +130,17 @@ public class RecipeFindController implements Initializable {
 								// TODO Auto-generated method stub
 
 								try {
+									RecipeViewController rvc = new RecipeViewController(recipeIdx);
+									FXMLLoader loader = new FXMLLoader(
+											getClass().getResource("/View/RecipeView.fxml"));
+									loader.setController(rvc);
+									
 									// 창 전환
-									Scene registerScene = new Scene(
-											FXMLLoader.load(getClass().getResource("/View/RecipeView.fxml")));
+									Scene registerScene = new Scene((Parent)loader.load());
 									Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 									window.setScene(registerScene);
+									
+									
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
