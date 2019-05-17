@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecipeViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane prefHeight="720.0" prefWidth="1280.0">
         <columnConstraints>
@@ -161,7 +161,7 @@
                      <top>
                         <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
                            <children>
-                              <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" rotate="225.0" styleClass="backBtn" text="Button">
+                              <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#BackBtn" prefHeight="20.0" prefWidth="20.0" rotate="225.0" styleClass="backBtn" text="Button">
                                  <HBox.margin>
                                     <Insets right="820.0" top="35.0" />
                                  </HBox.margin>

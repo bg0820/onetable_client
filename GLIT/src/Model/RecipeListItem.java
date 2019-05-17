@@ -8,10 +8,45 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class RecipeListItem extends Button {
 	
+	private ImageView userAvatarImgView = new ImageView();
+	private Label nickNameLab = new Label();
+	private ImageView recipeImg = new ImageView();
+	private Label recipeTitle = new Label();
+	private Label priceLab = new Label();
+	private Label priceDateLab = new Label();
+	
+	public void setPriceLab(String price)
+	{
+		priceLab.setText(price);
+	}
+	
+	public void setPriceDateLab(String priceDateStr)
+	{
+		priceDateLab.setText(priceDateStr);
+	}
+	public void setRecipeTitle(String title)
+	{
+		recipeTitle.setText(title);
+	}
+	
+	public void setAvatarImage(String url)
+	{
+		userAvatarImgView.setImage(new Image(url));
+	}
+	
+	public void setNickName(String nickname)
+	{
+		nickNameLab.setText(nickname);
+	}
+	
+	public void setRecipeImage(String url) {
+		recipeImg.setImage(new Image(url));
+	}
 	
 	public RecipeListItem(int width, int height) {
 		super.setPrefWidth(width);
@@ -26,45 +61,49 @@ public class RecipeListItem extends Button {
 		HBox titleArea = new HBox();
 		titleArea.setAlignment(Pos.CENTER_LEFT);
 		titleArea.setPadding(new Insets(5.0, 0.0, 5.0, 5.0));
-		ImageView userAvatarImgView = new ImageView();
-		userAvatarImgView.setImage(new Image("img/ava.png"));
+		
 		userAvatarImgView.setFitHeight(40.0);
 		userAvatarImgView.setFitWidth(40.0);
 		userAvatarImgView.setPickOnBounds(true);
 		userAvatarImgView.setPreserveRatio(true);
 		
-		Label nickNameLab = new Label();
-		nickNameLab.setAlignment(Pos.CENTER);
-		nickNameLab.setText("bg0820님");
+		
+		nickNameLab.setAlignment(Pos.BOTTOM_CENTER);
+		
 		titleArea.getChildren().add(userAvatarImgView);
 		titleArea.getChildren().add(nickNameLab);
 		
 		
-		ImageView recipeImg = new ImageView();
-		recipeImg.setImage(new Image("img/me.jpg"));
-		recipeImg.setFitHeight(200.0);
+		recipeImg.setFitHeight(230.0);
 		recipeImg.setFitWidth(width);
 		recipeImg.setPickOnBounds(false);
 		recipeImg.setPreserveRatio(false);
 		
-		Label recipeTitle = new Label();
-		recipeTitle.setText("레시피 제목");
 		
 		FlowPane bottomLabArea = new FlowPane();
-		Label priceLab = new Label();
-		Label priceDateLab = new Label();
 		
-		priceLab.setText("15,800원");
-		priceDateLab.setText("2018.05.04");
+		HBox priceArea = new HBox();
+
+
+		priceArea.getChildren().add(priceLab);
+		//priceArea.getChildren().add(perPriceLab);
+		//priceArea.getChildren().add(ingredientItemIdLab);
+		priceArea.setHgrow(priceLab, Priority.ALWAYS);
+
+		
+		//priceLab.setText("15,800원");
+		//priceDateLab.setText("2018.05.04");
 		
 		bottomLabArea.getChildren().add(priceLab);
 		bottomLabArea.getChildren().add(priceDateLab);
 		bottomLabArea.setMargin(priceDateLab, new Insets(0, 0, 0, 10.0));
 		
+	
 		vbox.getChildren().add(titleArea); // HBOX
 		vbox.getChildren().add(recipeImg); // imgView
 		vbox.getChildren().add(recipeTitle);
 		vbox.setMargin(recipeTitle, new Insets(0.0, 0.0, 0.0, 10.0));
+		vbox.getChildren().add(priceArea);
 		vbox.getChildren().add(bottomLabArea);
 		vbox.setMargin(bottomLabArea, new Insets(0, 0, 0, 10.0));
 		
@@ -75,28 +114,4 @@ public class RecipeListItem extends Button {
 		
 	}
 
-	public void setPrice(String price) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setPriceDate(String priceDate) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setDisplayName(String displayName) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setImageUrl(String url) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setRecipeItemId(String recipeItemId) {
-		// TODO Auto-generated method stub
-		
-	}
 }

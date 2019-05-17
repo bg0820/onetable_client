@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.CheckComboBox?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecipeFindController">
    <children>
@@ -135,11 +134,24 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ComboBox>
-                              <CheckComboBox fx:id="selectPrice" prefHeight="40.0" prefWidth="130.0" styleClass="CheckComboBox">
+                              <HBox fx:id="selectPrice" prefWidth="300.0">
+                                 <children>
+                                    <TextField prefHeight="40.0" prefWidth="100.0" styleClass="arr2" />
+                                    <Label prefHeight="40.0" text="~">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField prefHeight="40.0" prefWidth="100.0" styleClass="arr2">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
-                              </CheckComboBox>
+                              </HBox>
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" top="30.0" />
