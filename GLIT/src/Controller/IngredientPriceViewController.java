@@ -34,15 +34,14 @@ public class IngredientPriceViewController implements Initializable {
 	public IngredientPriceViewController(String ingredientItemId, String name) {
 		// TODO Auto-generated constructor stub
 		this.ingredientItemId = ingredientItemId;
-		System.out.println(name);
-		title.setText(name);
+		this.name = name;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		//http://1.240.181.56:8080/ingredient/price
-		// GET, ingredientItemId;
+		//System.out.println(name);
+		title.setText(this.name);
+
 		try {
 			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/price").ignoreContentType(true)
 					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("ingredientItemId", ingredientItemId)
@@ -73,10 +72,11 @@ public class IngredientPriceViewController implements Initializable {
 						int price = Integer.parseInt(dataItem.get("price").toString());
 						String priceDate = dataItem.get("priceDate").toString();
 
-						String name = dataItem.get("displayName").toString();
+						//String name = dataItem.get("name").toString();
+						//System.out.println("name");
 						series.getData().add(new XYChart.Data<String, Number>(priceDate, price));
 
-						System.out.println(i);
+						//System.out.println(i);
 						//IngredientListItem ingredientListItem = new IngredientListItem(295, 450);
 						//Price.setText(dataItem.get("price").toString());
 						//DisplayName.setText(dataItem.get("displayName").toString());

@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -36,9 +37,57 @@ public class IngredientViewController implements Initializable {
 	private ComboBox<String> selectMenu;
 	@FXML
 	private Button contextMenuBtn;
+	@FXML
+	private TextField inputSearch;
 
 	public void searchBtn(ActionEvent event) {
-		System.out.println("rjator");
+
+
+		String searchText = inputSearch.getText();
+		System.out.println(searchText);
+
+		listArea.getChildren().clear();
+
+
+		try {
+			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/search").ignoreContentType(true)
+					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("query", searchText).execute();
+
+			if (response.statusCode() == 200) {
+				System.out.println(response.body());
+				JSONParser jsonParser = new JSONParser();
+				JSONObject jsonObj = (JSONObject) jsonParser.parse(response.body());
+
+				if (jsonObj.get("status").toString().equals("SUCCESS")) {
+					JSONArray jsonArray = (JSONArray) jsonObj.get("data");
+					System.out.println(jsonArray.size());
+					for (int i = 0; i < jsonArray.size(); i++) {
+						JSONObject dataItem = (JSONObject) jsonArray.get(i);
+
+						if (dataItem.get("priceDate") == null || dataItem.get("imgUrl") == null
+								|| dataItem.get("ingredientItemId") == null)
+							continue;
+
+						System.out.println(i);
+						IngredientListItem ingredientListItem = new IngredientListItem(295, 450);
+						ingredientListItem.setPrice(dataItem.get("price").toString());
+						ingredientListItem.setPriceDate(dataItem.get("priceDate").toString());
+						ingredientListItem.setDisplayName(dataItem.get("displayName").toString());
+						// System.out.println(dataItem.get("imgUrl").toString());
+						ingredientListItem.setImageUrl(dataItem.get("imgUrl").toString());
+						ingredientListItem.setIngredientItemId(dataItem.get("ingredientItemId").toString());
+
+
+						listArea.getChildren().add(ingredientListItem);
+
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
 	}
 
 	public void contextMenu(MouseEvent event) {
@@ -70,7 +119,7 @@ public class IngredientViewController implements Initializable {
 
 		try {
 			Response response = Jsoup.connect("http://1.240.181.56:8080/ingredient/search/all").ignoreContentType(true)
-					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("startNum", "0")
+					.ignoreHttpErrors(true).method(Method.GET).header("API_Version", "1.0").data("startNum", "530")
 					.data("itemNum", "30").execute();
 
 			if (response.statusCode() == 200) {
@@ -126,7 +175,7 @@ public class IngredientViewController implements Initializable {
 						});
 
 						listArea.getChildren().add(ingredientListItem);
- 
+
 					}
 				}
 			}

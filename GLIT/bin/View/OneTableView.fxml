@@ -20,13 +20,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.IngredientViewController">
    <children>
       <GridPane layoutY="-14.0" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="19.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="81.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="19.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="81.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <VBox prefHeight="720.0" prefWidth="267.0" style="-fx-background-color: #74CEBD;">
                <children>
@@ -48,7 +48,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="재료 가격" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -62,10 +62,6 @@
                            </image>
                         </ImageView>
                      </graphic>
-                     <styleClass>
-                        <String fx:value="sidebuttonSelect" />
-                        <String fx:value="menubutton" />
-                     </styleClass>
                   </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="레시피">
                      <VBox.margin>
@@ -79,7 +75,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="한상차림">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" stylesheets="@../ViewCss/IngredientView.css" text="한상차림">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -90,6 +86,10 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <styleClass>
+                        <String fx:value="menubutton" />
+                        <String fx:value="sidebuttonSelect" />
+                     </styleClass>
                   </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="30.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" styleClass="menubutton" stylesheets="@../ViewCss/IngredientView.css" text="랭킹">
                      <VBox.margin>
@@ -129,8 +129,6 @@
                                     <Font size="24.0" />
                                  </font>
                               </Button>
-                              
-                             
                            </children>
                         </HBox>
                      </children>
@@ -156,7 +154,8 @@
                                  </graphic>
                                  <HBox.margin>
                                     <Insets top="20.0" />
-                                 </HBox.margin></Button>
+                                 </HBox.margin>
+                              </Button>
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -164,7 +163,7 @@
                         </HBox>
                         <HBox prefHeight="40.0" prefWidth="1036.0" VBox.vgrow="NEVER">
                            <children>
-                              <TextField fx:id="inputSearch" prefHeight="40.0" prefWidth="465.0" styleClass="searchLabel" stylesheets="@../ViewCss/IngredientView.css">
+                              <TextField prefHeight="40.0" prefWidth="465.0" styleClass="searchLabel" stylesheets="@../ViewCss/IngredientView.css">
                                  <HBox.margin>
                                     <Insets left="29.0" />
                                  </HBox.margin>
@@ -179,10 +178,17 @@
                               </Button>
                            </children>
                         </HBox>
-                        <FlowPane fx:id="listArea" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" styleClass="listArea" stylesheets="@../ViewCss/IngredientView.css" vgap="20.0" VBox.vgrow="ALWAYS">
+                        <FlowPane fx:id="listArea" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" vgap="20.0" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#searchBtn" prefHeight="40.0" prefWidth="140.0" styleClass="searchBtn" stylesheets="@../ViewCss/IngredientView.css" text="등록">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
                         </FlowPane>
                      </children>
                   </VBox>
